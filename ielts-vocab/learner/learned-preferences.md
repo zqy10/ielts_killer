@@ -6,7 +6,7 @@ Agent: read this file before curating vocabulary when it exists.
 - Prefer phrases: **True**
 
 ## Tend to keep
-- `blockade` (boost 0.938)
+- `blockade` (boost 0.981)
 - `escalation` (boost 0.875)
 - `retaliation` (boost 0.875)
 - `interceptor` (boost 0.875)
@@ -23,6 +23,7 @@ Agent: read this file before curating vocabulary when it exists.
 - `unladen` (boost 0.875)
 
 ## Tend to reject
+- `aggression` (penalty 0.925)
 - `legitimate` (penalty 0.8)
 - `reliant` (penalty 0.8)
 - `hesitant` (penalty 0.8)
@@ -35,22 +36,21 @@ Agent: read this file before curating vocabulary when it exists.
 - `hawk` (penalty 0.8)
 - `unification` (penalty 0.8)
 - `fortify` (penalty 0.8)
-- `aggression` (penalty 0.75)
 - `ceasefire` (penalty 0.75)
 - `facilitate` (penalty 0.7)
 
 ## Hard reject list
-`aggression`, `bushmeat`, `captivity`, `ceasefire`, `conceal`, `disloyalty`, `facilitate`, `fertile`, `fortify`, `hawk`, `hesitant`, `intelligence-led`, `legitimate`, `liberate`, `nationalism`, `populous`, `refuge`, `reliant`, `unification`
+`aggression`, `bushmeat`, `captivity`, `ceasefire`, `conceal`, `disloyalty`, `facilitate`, `fertile`, `fortify`, `hawk`, `hesitant`, `intelligence-led`, `legitimate`, `liberate`, `nationalism`, `overextended`, `populous`, `refuge`, `reliant`, `strategic`, `unification`
 
 ## POS preference
-- NOUN: 0.363
-- ADJ: 0.323
-- VERB: 0.22
-- PHR: 0.113
-- N./ADJ.: 0.02
-- N./V.: 0.02
+- NOUN: 0.523
+- ADJ: 0.224
+- VERB: 0.13
+- PHR: 0.066
+- N./ADJ.: 0.038
+- N./V.: 0.038
 
 ## Recent review sessions
-- 2026-06-04: kept 26, rejected 0, lr=50 — `c5yx135yg53o-2026-06-02.tex`
 - 2026-06-04: kept 14, rejected 12, lr=80 — `x-XdOaZPhBw-2026-06-04.tex`
 - 2026-06-04: kept 17, rejected 5, lr=70 — `pangolin-rehabilitation-2026-06-04.tex`
+- 2026-06-04: kept 22, rejected 3, lr=70 — `bq66pBjvuNw.tex`

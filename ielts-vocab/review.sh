@@ -19,4 +19,4 @@ N="${1:-1}"
 "$PY" "$SCRIPTS/merge_vocab.py" \
   --reviewed-dir "$ROOT/reviewed" \
   --vocabulary "$ROOT/vocabulary.tex"
-echo "完成。已更新 vocabulary.tex"
+echo "完成。已更新 vocabulary.tex（已全局去重，词库 vocab.db）"
