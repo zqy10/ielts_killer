@@ -3,8 +3,8 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 REPO="$(cd "$ROOT/.." && pwd)"
-PY="$REPO/.cursor/skills/ielts-vocab-miner/scripts/.venv/bin/python"
-SCRIPTS="$REPO/.cursor/skills/ielts-vocab-miner/scripts"
+PY="$REPO/.claude/skills/ielts-vocab-miner/scripts/.venv/bin/python"
+SCRIPTS="$REPO/.claude/skills/ielts-vocab-miner/scripts"
 
 if [[ ! -x "$PY" ]]; then
   echo "未找到 Python venv。请先运行:" >&2
