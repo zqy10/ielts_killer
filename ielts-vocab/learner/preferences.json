@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "lemma_boost": {
+    "escalation": 0.875,
+    "retaliation": 0.875,
+    "interceptor": 0.875,
+    "intercept": 0.875,
+    "deliberate": 0.875,
+    "calculated": 0.875,
+    "unjustified": 0.875,
+    "diplomatic": 0.875,
+    "summon": 0.875,
+    "charge": 0.875,
+    "condemn": 0.875,
+    "blockade": 0.938,
+    "mariner": 0.875,
+    "transit": 0.875,
+    "unladen": 0.875,
+    "disrupt": 0.875,
+    "unmistakable": 0.875,
+    "stall": 0.875,
+    "sanctions": 0.875,
+    "condition-based": 0.875,
+    "highly": 0.875,
+    "contradictory": 0.875,
+    "shaky": 0.875,
+    "self-defence": 0.875,
+    "aggression": 0.75,
+    "ceasefire": 0.5,
+    "concession": 0.5,
+    "upheaval": 0.5,
+    "supremacy": 0.5,
+    "generalissimo": 0.5,
+    "guerrilla": 0.5,
+    "repression": 0.5,
+    "mirage": 0.5,
+    "colossal": 0.5,
+    "malnutrition": 0.5,
+    "annihilate": 0.5,
+    "demilitarization": 0.5,
+    "stealthy": 0.5,
+    "reunify": 0.5,
+    "pyrrhic": 0.5,
+    "insurgency": 0.5,
+    "appeasement": 0.5,
+    "mutiny": 0.5,
+    "skirmish": 0.5,
+    "existential": 0.5,
+    "united": 0.5,
+    "strategic": 0.5,
+    "overextended": 0.5,
+    "predicament": 0.5
+  },
+  "lemma_penalty": {
+    "aggression": 0.75,
+    "ceasefire": 0.75
+  },
+  "pos_boost": {
+    "NOUN": 0.341,
+    "VERB": 0.182,
+    "ADJ": 0.294,
+    "PHR": 0.101,
+    "N./ADJ.": 0.02,
+    "N./V.": 0.02
+  },
+  "min_length_preference": 9,
+  "reject_lemmas": [
+    "aggression",
+    "ceasefire"
+  ],
+  "prefer_phrases": true,
+  "sessions": [
+    {
+      "file": "/Users/a123/Projects/diff/ielts-vocab/output/c5yx135yg53o-2026-06-02.tex",
+      "kept": 24,
+      "rejected": 2,
+      "learning_rate": 75,
+      "date": "2026-06-04"
+    },
+    {
+      "file": "/Users/a123/Projects/diff/ielts-vocab/output/c5yx135yg53o-2026-06-02.tex",
+      "kept": 26,
+      "rejected": 0,
+      "learning_rate": 0,
+      "date": "2026-06-04"
+    },
+    {
+      "file": "bq66pBjvuNw.tex",
+      "kept": 25,
+      "rejected": 0,
+      "learning_rate": 50,
+      "date": "2026-06-04"
+    },
+    {
+      "file": "c5yx135yg53o-2026-06-02.tex",
+      "kept": 26,
+      "rejected": 0,
+      "learning_rate": 50,
+      "date": "2026-06-04"
+    }
+  ]
+}

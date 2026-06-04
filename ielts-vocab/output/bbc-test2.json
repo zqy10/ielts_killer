@@ -1,0 +1,11 @@
+{
+  "title": "unknown",
+  "url": "https://www.bbc.com/news/articles/cwy74l1evvlo",
+  "date": "unknown",
+  "source_type": "article",
+  "text": "",
+  "candidates": [],
+  "warnings": [
+    "trafilatura_fetch_failed: try WebFetch fallback per SKILL.md"
+  ]
+}

@@ -1,0 +1,227 @@
+% ============================================================
+%  个人词汇学习笔记 | Personal Vocabulary Notebook
+%  编译器：XeLaTeX（Overleaf 菜单 → Compiler → XeLaTeX）
+% ============================================================
+
+\documentclass[12pt, a4paper]{article}
+
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.8cm, right=2.8cm]{geometry}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\headheight}{15pt}
+
+% ---------- 字体 ----------
+\setmainfont{Times New Roman}
+\setCJKmainfont{FandolSong}
+% Charis SIL 完整支持 IPA Unicode，Overleaf 内置
+\newfontfamily\ipafont{Charis SIL}
+\newcommand{\ipa}[1]{{\ipafont #1}}
+
+% ---------- 颜色 ----------
+\definecolor{headerblue}{RGB}{31, 73, 125}
+\definecolor{entrybox}{RGB}{235, 244, 255}
+\definecolor{entryborder}{RGB}{91, 155, 213}
+\definecolor{syncolor}{RGB}{0, 120, 60}
+\definecolor{antcolor}{RGB}{180, 30, 30}
+\definecolor{excolor}{RGB}{80, 80, 80}
+\definecolor{sourcecolor}{RGB}{102, 102, 153}
+
+% ---------- 页眉页脚 ----------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{headerblue}{\textbf{个人词汇学习笔记}}}
+\fancyhead[R]{\small\textcolor{headerblue}{\nouppercase{\leftmark}}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ---------- 标题样式 ----------
+\titleformat{\section}{\Large\bfseries\color{headerblue}}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\large\bfseries\color{sourcecolor}}{}{0em}{}
+
+% ---------- 词条框 ----------
+\mdfdefinestyle{vocabframe}{
+  backgroundcolor=entrybox,
+  linecolor=entryborder,
+  linewidth=1.2pt,
+  topline=false, rightline=false, bottomline=false,
+  innerleftmargin=10pt, innerrightmargin=10pt,
+  innertopmargin=6pt, innerbottommargin=6pt,
+  skipabove=5pt, skipbelow=2pt,
+}
+
+% ---------- 命令定义 ----------
+
+% \vocabsource{标题}{URL}{日期}
+\newcommand{\vocabsource}[3]{%
+  \subsection*{\textcolor{sourcecolor}{#1}}%
+  \noindent\textcolor{gray}{\small 来源：\texttt{#2}\hfill 记录日期：#3}%
+  \par\vspace{4pt}\hrule height 0.3pt\vspace{8pt}%
+}
+
+% \vocabentry{单词}{词性}{音标}{中文释义}{例句}{近义词}{反义词}
+\newcommand{\vocabentry}[7]{%
+  \begin{mdframed}[style=vocabframe]
+    \noindent{\large\bfseries #1}%
+    \enspace{\small\itshape\textcolor{gray}{#2}}%
+    \enspace{\small\textcolor{gray}{/\ipa{#3}/}}%
+    \par\vspace{3pt}%
+    \noindent\textbf{释义：}#4%
+    \par\vspace{2pt}%
+    \noindent\textbf{例句：}\textcolor{excolor}{\textit{#5}}%
+    \par\vspace{2pt}%
+    \noindent\textbf{\textcolor{syncolor}{近义：}}{\small\textcolor{syncolor}{#6}}%
+    \quad\textbf{\textcolor{antcolor}{反义：}}{\small\textcolor{antcolor}{#7}}%
+  \end{mdframed}\vspace{2pt}%
+}
+
+% ============================================================
+\begin{document}
+
+% ===== 封面 =====
+\begin{titlepage}
+  \centering\vspace*{4cm}
+  {\Huge\bfseries\color{headerblue} 个人词汇学习笔记}\\[0.5cm]
+  {\Large Personal Vocabulary Notebook}\\[2cm]
+  {\large 记录日常生活与学习中遇到的英文词汇}\\[2cm]
+  {\large\textcolor{gray}{by zqy}}\\[0.5cm]
+  {\large\textcolor{gray}{mason.zqy@gmail.com}}\\[3cm]
+  \vfill
+  {\large 开始日期：2026 年 6 月}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% ============================================================
+\section{视频来源 (From Videos)}
+\markboth{视频来源}{}
+
+\vocabsource{The Rise of Xi Jinping}{https://www.youtube.com/watch?v=1ZKBaRsP1gY}{2026.6.2}
+
+\vocabentry{choreograph}{vt.}{ˈkɒriəɡrɑːf}{精心策划；编排（动作或事件）}{Their identities are revealed at a carefully \textbf{choreographed} political event.}{orchestrate, arrange, coordinate}{improvise}
+\vocabentry{predecessor}{n.}{ˈpriːdɪsesə(r)}{前任；前辈；前身}{Xi Jinping's \textbf{predecessor} Hu Jintao left office in 2012.}{forerunner, antecedent}{successor}
+\vocabentry{dictatorship}{n.}{dɪkˈteɪtəʃɪp}{独裁统治；专制政体（词族：dictate → dictator → dictatorship）}{Mao's ruthless \textbf{dictatorship} scarred the Chinese people for generations.}{tyranny, autocracy, authoritarianism}{democracy, republic}
+\vocabentry{condemn}{vt.}{kənˈdem}{谴责；判处；使陷入困境}{A teenage Xi ended up in exile, \textbf{condemned} to hard labor in the countryside.}{censure, denounce, sentence}{praise, commend, acquit}
+\vocabentry{banish}{vt.}{ˈbænɪʃ}{流放；驱逐；放逐}{How did he go from being \textbf{banished} to taking complete control of the country?}{exile, expel, deport}{welcome, repatriate}
+\vocabentry{swath}{n.}{swɒθ}{大片（地区或范围）}{He gained influence over large \textbf{swaths} of mainland China.}{stretch, expanse, tract}{---}
+\vocabentry{bulk}{n.}{bʌlk}{大部分；主体}{The \textbf{bulk} of their army is pinned down here.}{majority, mass, lion's share}{minority, fraction}
+\vocabentry{guerrilla}{n./adj.}{ɡəˈrɪlə}{游击队（员）；游击战（的）}{They relied on \textbf{guerrilla} tactics to resist the larger enemy force.}{partisan, insurgent}{---}
+\vocabentry{relentless}{adj.}{rɪˈlentləs}{不间断的；无情的；持续不断的}{They suffered \textbf{relentless} attacks by the pursuing Nationalist Army.}{unceasing, merciless, persistent}{merciful, lenient}
+\vocabentry{annihilation}{n.}{əˌnaɪəˈleɪʃn}{歼灭；彻底消灭（近义：eradication）}{Mao's leadership saved the Red Army from total \textbf{annihilation}.}{eradication, obliteration, destruction}{preservation, survival}
+\vocabentry{de facto}{adv./adj.}{ˌdeɪ ˈfæktəʊ}{事实上（的）；实际上（的）（对比：de jure = 法律上的）}{He became the \textbf{de facto} head of the party before holding the official title.}{in practice, effectively}{de jure（法律上的）}
+\vocabentry{assume}{vt.}{əˈsjuːm}{承担（职务）；获得（地位）；假设}{Mao, once a lowly party worker, \textbf{assumed} the stature of the dominant figure in East Asia.}{take on, adopt, undertake}{relinquish, abdicate}
+\vocabentry{persecution}{n.}{ˌpɜːsɪˈkjuːʃn}{迫害；虐待}{His unchecked policies resulted in massive famines and widespread \textbf{persecution}.}{oppression, harassment, victimisation}{protection, tolerance}
+\vocabentry{consolidate}{vt.}{kənˈsɒlɪdeɪt}{巩固；合并；加强}{It was a violent final attempt from Mao to \textbf{consolidate} his power.}{strengthen, reinforce, unify}{weaken, divide, fragment}
+\vocabentry{denounce}{vt.}{dɪˈnaʊns}{公开谴责；检举揭发}{He was \textbf{denounced} as a traitor.}{condemn, accuse, censure}{praise, commend, defend}
+\vocabentry{rehabilitate}{vt.}{ˌriːəˈbɪlɪteɪt}{使复原；使恢复名誉；改造（囚犯）}{The prison aimed to \textbf{rehabilitate} its prisoners rather than merely punish them.}{restore, reform, reintegrate}{punish, condemn}
+\vocabentry{blunder}{n./vi.}{ˈblʌndə(r)}{严重错误；犯大错}{The Cultural Revolution was described as a grave \textbf{blunder}.}{mistake, error, gaffe}{achievement, triumph}
+\vocabentry{prudent}{adj.}{ˈpruːdnt}{谨慎的；明智的；深思熟虑的}{Xi developed a reputation as a \textbf{prudent} leader who toed the party line.}{cautious, wise, judicious}{reckless, rash, imprudent}
+\vocabentry{rally}{vt./n.}{ˈræli}{召集；团结；集会；（价格等）回升}{Xi believes that \textbf{rallying} around a single figure is crucial to the party's survival.}{unite, mobilise, assemble}{disperse, scatter}
+\vocabentry{reassert}{vt.}{ˌriːəˈsɜːt}{重申；重新宣示（主权等）}{China has been \textbf{reasserting} its claims over parts of the South China Sea.}{reaffirm, reclaim}{abandon, relinquish}
+\vocabentry{intimidate}{vt.}{ɪnˈtɪmɪdeɪt}{恐吓；威胁}{Beijing has been \textbf{intimidating} Taiwan through military and economic pressure.}{threaten, bully, coerce}{encourage, embolden, reassure}
+\vocabentry{censorship}{n.}{ˈsensəʃɪp}{审查制度；新闻管制}{Strict internet \textbf{censorship} and surveillance are widespread under Xi's rule.}{suppression, restriction}{freedom of speech}
+\vocabentry{surveillance}{n.}{sɜːˈveɪləns}{监视；监控}{The government employs mass \textbf{surveillance} to monitor its citizens.}{monitoring, observation, oversight}{privacy}
+\vocabentry{oppression}{n.}{əˈpreʃn}{压迫；压制；专制暴政}{Human rights groups documented the \textbf{oppression} of the Uyghurs.}{persecution, suppression, tyranny}{freedom, liberation}
+\vocabentry{peril}{n.}{ˈperəl}{严重危险；险境}{With the party's reputation in \textbf{peril}, Xi moved quickly to restore confidence.}{danger, hazard, jeopardy}{safety, security}
+\vocabentry{verge}{n.}{vɜːdʒ}{边缘；临界点（常用搭配：on the verge of）}{China is on the \textbf{verge} of becoming the world's next superpower.}{brink, threshold, edge}{centre, core}
+\vocabentry{begrudge}{vt.}{bɪˈɡrʌdʒ}{嫉妒；不情愿地给；吝于给予}{Few would \textbf{begrudge} him the success he worked so hard to achieve.}{resent, envy, grudge}{welcome, congratulate}
+\vocabentry{impoverish}{vt.}{ɪmˈpɒvərɪʃ}{使贫穷；使枯竭}{Decades of mismanagement had \textbf{impoverished} much of the rural population.}{pauperise, deplete, drain}{enrich}
+\vocabentry{culminate}{vi.}{ˈkʌlmɪneɪt}{达到高潮；以……告终（常用搭配：culminate in）}{Years of political tension \textbf{culminated in} the Cultural Revolution.}{climax, conclude, result in}{begin, initiate}
+\vocabentry{confrontation}{n.}{ˌkɒnfrʌnˈteɪʃn}{对抗；冲突；正面交锋}{The two nations edged closer to open \textbf{confrontation}.}{clash, conflict, standoff}{cooperation, reconciliation}
+\vocabentry{equivalent}{n./adj.}{ɪˈkwɪvələnt}{等同物；相当的；等价的}{The position was roughly \textbf{equivalent} to that of a head of state.}{equal, counterpart, parallel}{different, disparate}
+
+\vocabsource{Mao's Art of War: The Long March and the Chinese Civil War}{https://www.youtube.com/watch?v=bq66pBjvuNw}{2023-06-02}
+
+\vocabentry{concession}{n.}{/kənˈseʃ.ən/}{让步；割让}{The Western Powers and Japan forced the Emperor to accept political, economic, and territorial concessions.}{compromise, grant}{refusal, denial}
+\vocabentry{upheaval}{n.}{/ʌpˈhiː.vəl/}{剧变；动荡}{China's 20th century began with war, social instability, and political upheaval.}{turmoil, disruption}{stability, calm}
+\vocabentry{supremacy}{n.}{/suːˈprem.ə.si/}{霸权；至高地位}{Republicanism, warlordism, nationalism, and communism struggled for supremacy through revolution.}{dominance, hegemony}{inferiority, subordination}
+\vocabentry{Generalissimo}{n.}{/ˌdʒen.ər.əˈlɪs.ɪ.məʊ/}{大元帅；军事独裁者}{After unification, Chiang stayed in military control as Generalissimo – a semi-dictator with broad support.}{commander-in-chief}{-}
+\vocabentry{guerrilla}{n./adj.}{/ɡəˈrɪl.ə/}{游击（的）}{Zhou used conventional tactics to fight the NRA, but Mao preferred guerrilla tactics.}{irregular, partisan}{conventional, regular}
+\vocabentry{repression}{n.}{/rɪˈpreʃ.ən/}{镇压；压制}{In April 1927, Chiang ordered violent repression of Shanghai communists by Nationalist troops.}{suppression, crackdown}{liberation, tolerance}
+\vocabentry{mirage}{n.}{/ˈmɪr.ɑːʒ/}{幻象；假象}{Chiang announced national unification after the Northern Expedition, but this was a mirage.}{illusion, delusion}{reality, fact}
+\vocabentry{colossal}{adj.}{/kəˈlɒs.əl/}{巨大的；惊人的}{For the present upsurge of the peasant movement is a colossal event.}{immense, gigantic}{tiny, negligible}
+\vocabentry{malnutrition}{n.}{/ˌmæl.njuːˈtrɪʃ.ən/}{营养不良}{Deaths due to malnutrition were common among the poorest peasants.}{undernourishment}{-}
+\vocabentry{annihilate}{v.}{/əˈnaɪ.ə.leɪt/}{歼灭；彻底消灭}{When the Red Army annihilated two Nationalist divisions, Chiang called off the campaign.}{destroy, wipe out}{create, spare}
+\vocabentry{blockade}{n./v.}{/blɒˈkeɪd/}{封锁}{The NRA planned to blockade the CCP soviets and destroy them.}{siege, encirclement}{opening, access}
+\vocabentry{demilitarization}{n.}{/diːˌmɪl.ɪ.tə.raɪˈzeɪ.ʃən/}{非军事化}{The Japanese advanced further into China and demanded the demilitarization of Hubei province.}{disarmament}{militarization, armament}
+\vocabentry{stealthy}{adj.}{/ˈstel.θi/}{隐秘的；悄无声息的}{The Red Army was swift and stealthy while the NRA could not hide their movements.}{covert, surreptitious}{obvious, conspicuous}
+\vocabentry{reunify}{v.}{/riːˈjuː.nɪ.faɪ/}{重新统一}{He called for a great military campaign to destroy the warlords and reunify China.}{unite, consolidate}{divide, split}
+\vocabentry{pyrrhic}{adj.}{/ˈpɪr.ɪk/}{得不偿失的；惨胜的}{However pyrrhic and controversial the Long March was, it did mean that the CCP lived to fight another day.}{costly, hollow}{decisive, triumphant}
+\vocabentry{insurgency}{n.}{/ɪnˈsɜː.dʒən.si/}{叛乱；暴动}{One of Mao's central principles was his Three Stages of Insurgency Warfare.}{uprising, rebellion}{loyalty, peace}
+\vocabentry{appeasement}{n.}{/əˈpiːz.mənt/}{绥靖；姑息}{Many Chinese were unhappy with the Nationalist government's appeasement of Japan after initial resistance.}{conciliation, pacification}{confrontation, defiance}
+\vocabentry{mutiny}{n.}{/ˈmjuː.tɪ.ni/}{兵变；叛乱}{On December 12, a mutiny broke out in the Nationalist camp.}{revolt, insurrection}{obedience, loyalty}
+\vocabentry{skirmish}{n.}{/ˈskɜː.mɪʃ/}{小规模冲突；遭遇战}{A skirmish broke out when Japanese troops were on a nighttime exercise near the Marco Polo Bridge.}{clash, encounter}{truce, peace}
+\vocabentry{existential}{adj.}{/ˌek.sɪˈsten.ʃəl/}{关乎存亡的}{Chiang and the KMT saw the Communists as the most pressing existential threat.}{critical, mortal}{trivial, minor}
+\vocabentry{united front}{phr.}{/juːˈnaɪ.tɪd frʌnt/}{统一战线}{Sun agreed, and the two parties formed the First United Front in 1924.}{coalition, alliance}{split, rupture}
+\vocabentry{strategic retreat}{phr.}{/strəˈtiː.dʒɪk rɪˈtriːt/}{战略撤退}{Mao wrote about the value of a strategic retreat to live to fight another day.}{withdrawal, pullback}{advance, offensive}
+\vocabentry{overextended}{adj.}{/ˌəʊ.vər.ɪkˈstend.ɪd/}{过度扩张的}{Communist guerrilla tactics began to wear down the overextended NRA.}{overstretched, strained}{compact, focused}
+\vocabentry{predicament}{n.}{/prɪˈdɪk.ə.mənt/}{困境；窘境}{As the Red Army captured towns on its path, Communist leaders debated their predicament.}{dilemma, plight}{advantage, ease}
+\vocabentry{aggression}{n.}{/əˈɡreʃ.ən/}{侵略；攻击}{Chiang had decided that this time they would resist Japanese aggression.}{hostility, assault}{peace, restraint}
+
+
+\section{文章来源 (From Articles)}
+\markboth{文章来源}{}
+
+\vocabsource{One killed and dozens injured in Iranian drone strikes on Kuwait airport}{https://www.bbc.com/news/articles/c5yx135yg53o}{2026-06-02}
+
+\vocabentry{aggression}{n.}{/əˈɡreʃ.ən/}{侵略；挑衅行为}{Kuwait's defence ministry spokesman called Wednesday's attack criminal Iranian aggression.}{hostility, assault}{defence, peace}
+\vocabentry{escalation}{n.}{/ˌes.kəˈleɪ.ʃən/}{升级；加剧}{The latest escalation threatens a shaky US-Iran ceasefire.}{intensification, heightening}{de-escalation, easing}
+\vocabentry{ceasefire}{n.}{/ˈsiːs.faɪər/}{停火}{The latest escalation threatens a shaky US-Iran ceasefire.}{truce, armistice}{hostilities, warfare}
+\vocabentry{retaliation}{n.}{/rɪˌtæl.iˈeɪ.ʃən/}{报复}{The IRGC had earlier said it targeted US bases in the Gulf in retaliation for US strikes.}{reprisal, counterattack}{conciliation, forgiveness}
+\vocabentry{interceptor}{n.}{/ˌɪn.təˈsep.tər/}{拦截导弹/飞机}{Iran claimed the damage was caused by an error from a US missile interceptor.}{defence system, interceptor missile}{-}
+\vocabentry{intercept}{v.}{/ˌɪn.təˈsept/}{拦截}{The US shot down or intercepted Iranian missiles fired at Kuwait and Bahrain.}{block, stop}{allow, permit}
+\vocabentry{deliberate}{adj.}{/dɪˈlɪb.ər.ət/}{蓄意的}{Centcom claimed Iran struck the airport in a deliberate, calculated and unjustified attack.}{intentional, premeditated}{accidental, inadvertent}
+\vocabentry{calculated}{adj.}{/ˈkæl.kjə.leɪ.tɪd/}{经过算计的；蓄意的}{Centcom claimed Iran struck the airport in a deliberate, calculated and unjustified attack.}{premeditated, measured}{spontaneous, impulsive}
+\vocabentry{unjustified}{adj.}{/ʌnˈdʒʌs.tɪ.faɪd/}{无理的；缺乏正当理由的}{Centcom claimed Iran struck the airport in a deliberate, calculated and unjustified attack.}{unwarranted, groundless}{justified, legitimate}
+\vocabentry{diplomatic}{adj.}{/ˌdɪpləˈmæt.ɪk/}{外交的}{The foreign ministry said diplomatic missions had been damaged.}{consular, political}{military, domestic}
+\vocabentry{summon}{v.}{/ˈsʌm.ən/}{召见；传唤}{Kuwait's foreign ministry summoned Iran's charge d'affaires.}{call in, convene}{dismiss, release}
+\vocabentry{charge d'affaires}{phr.}{/ˌʃɑːʒ dæˈfeər/}{临时代办}{Kuwait summoned Iran's charge d'affaires after the strikes.}{acting ambassador, envoy}{-}
+\vocabentry{condemn}{v.}{/kənˈdem/}{谴责}{The Indian foreign ministry condemned the attack.}{denounce, censure}{praise, endorse}
+\vocabentry{blockade}{n.}{/blɒˈkeɪd/}{封锁}{Centcom struck an oil tanker as part of the US naval blockade on the Strait of Hormuz.}{siege, embargo}{opening, passage}
+\vocabentry{mariner}{n.}{/ˈmær.ɪ.nər/}{水手；船员}{Iran launched attack drones toward civilian mariners that were rightfully transiting regional waters.}{sailor, seafarer}{-}
+\vocabentry{transit}{v.}{/ˈtræn.zɪt/}{通行；过境}{Civilian mariners were rightfully transiting regional waters.}{pass through, cross}{block, obstruct}
+\vocabentry{unladen}{adj.}{/ʌnˈleɪ.dən/}{未载货的}{Centcom struck and disabled an unladen oil tanker sailing towards Iran.}{empty, without cargo}{laden, loaded}
+\vocabentry{disrupt}{v.}{/dɪsˈrʌpt/}{破坏；扰乱}{Disrupting the security of the Strait of Hormuz will carry a heavy price, the IRGC vowed.}{undermine, disturb}{stabilise, secure}
+\vocabentry{unmistakable}{adj.}{/ˌʌn.mɪˈsteɪ.kə.bəl/}{明确无误的}{Tehran said Kuwait and Bahrain had direct and unmistakable responsibility for last night's acts of aggression.}{unequivocal, clear}{ambiguous, vague}
+\vocabentry{stall}{v.}{/stɔːl/}{停滞；搁置}{Ceasefire negotiations between the US and Iran stalled, with a deal failing to advance.}{stagnate, deadlock}{progress, advance}
+\vocabentry{sanctions relief}{phr.}{/ˈsæŋk.ʃənz rɪˈliːf/}{解除制裁}{Negotiators had not offered Iran sanctions relief in exchange for reopening the strait.}{easing of sanctions, exemption}{sanctions, penalties}
+\vocabentry{condition-based}{adj.}{/kənˈdɪʃ.ən beɪst/}{以条件为前提的}{Any sanctions relief is condition-based, Rubio told Congress.}{conditional, contingent}{unconditional, automatic}
+\vocabentry{highly enriched uranium}{phr.}{/ˌhaɪ.li ɪnˌrɪtʃt juːˈreɪ.ni.əm/}{高浓缩铀}{The changes related to the removal of highly enriched uranium from Iran.}{HEU, weapons-grade material}{-}
+\vocabentry{contradictory}{adj.}{/ˌkɒntrəˈdɪk.tər.i/}{自相矛盾的}{Washington was constantly changing its views and putting forward new or contradictory demands.}{inconsistent, conflicting}{consistent, coherent}
+\vocabentry{shaky}{adj.}{/ˈʃeɪ.ki/}{不稳固的；摇摇欲坠的}{The latest escalation threatens a shaky US-Iran ceasefire.}{fragile, unstable}{solid, stable}
+\vocabentry{self-defence}{n.}{/ˌself dɪˈfens/}{自卫}{The US said it had launched self-defence strikes on Iran.}{self-protection, retaliation}{aggression, offence}
+
+
+\section{书籍来源 (From Books)}
+\markboth{书籍来源}{}
+
+\newpage
+\section*{附录：词性缩写说明}
+
+\begin{tabular}{ll@{\hspace{2cm}}ll}
+\toprule
+\textbf{缩写} & \textbf{含义} & \textbf{缩写} & \textbf{含义} \\
+\midrule
+n.   & 名词  & vt.  & 及物动词 \\
+v.   & 动词  & vi.  & 不及物动词 \\
+adj. & 形容词 & adv. & 副词 \\
+phr. & 短语  & prep.& 介词 \\
+\bottomrule
+\end{tabular}
+
+\vspace{1cm}
+\noindent\textbf{颜色说明：}
+\begin{itemize}
+  \item \textcolor{syncolor}{\textbf{绿色}} --- 近义词 (Synonyms)
+  \item \textcolor{antcolor}{\textbf{红色}} --- 反义词 (Antonyms)
+  \item \textcolor{excolor}{灰色斜体} --- 例句 (Example sentences)
+\end{itemize}
+
+\end{document}

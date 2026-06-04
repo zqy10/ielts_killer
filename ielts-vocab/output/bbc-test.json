@@ -1,0 +1,346 @@
+{
+  "title": "Climate summit opens amid mounting pressure",
+  "url": "https://www.bbc.com/news/articles/sample-verification",
+  "date": "2026-06-04",
+  "source_type": "local",
+  "text": "World leaders gathered in Geneva on Thursday as a climate summit opened amid mounting pressure to reach a deal. Delegates said financing remained the most contentious issue on the agenda, with several states yet to ratify the amended treaty. Analysts warned that without a coherent framework, disparities in funding would widen further. Officials pledged to mitigate the worst effects of warming, but critics argued that superficial reforms could not substantiate long-term resilience. The talks are expected to set a precedent for how emerging economies participate in future negotiations.",
+  "candidates": [
+    {
+      "lemma": "coherent",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Analysts warned that without a coherent framework, disparities in funding would widen further."
+    },
+    {
+      "lemma": "contentious",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Delegates said financing remained the most contentious issue on the agenda, with several states yet to ratify the amended treaty."
+    },
+    {
+      "lemma": "delegate",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Delegates said financing remained the most contentious issue on the agenda, with several states yet to ratify the amended treaty."
+    },
+    {
+      "lemma": "disparity",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Analysts warned that without a coherent framework, disparities in funding would widen further."
+    },
+    {
+      "lemma": "financing",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Delegates said financing remained the most contentious issue on the agenda, with several states yet to ratify the amended treaty."
+    },
+    {
+      "lemma": "framework",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Analysts warned that without a coherent framework, disparities in funding would widen further."
+    },
+    {
+      "lemma": "mitigate",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Officials pledged to mitigate the worst effects of warming, but critics argued that superficial reforms could not substantiate long-term resilience."
+    },
+    {
+      "lemma": "negotiation",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "The talks are expected to set a precedent for how emerging economies participate in future negotiations."
+    },
+    {
+      "lemma": "official",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Officials pledged to mitigate the worst effects of warming, but critics argued that superficial reforms could not substantiate long-term resilience."
+    },
+    {
+      "lemma": "participate",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.5,
+      "sample": "The talks are expected to set a precedent for how emerging economies participate in future negotiations."
+    },
+    {
+      "lemma": "precedent",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "The talks are expected to set a precedent for how emerging economies participate in future negotiations."
+    },
+    {
+      "lemma": "pressure",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "World leaders gathered in Geneva on Thursday as a climate summit opened amid mounting pressure to reach a deal."
+    },
+    {
+      "lemma": "resilience",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Officials pledged to mitigate the worst effects of warming, but critics argued that superficial reforms could not substantiate long-term resilience."
+    },
+    {
+      "lemma": "substantiate",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Officials pledged to mitigate the worst effects of warming, but critics argued that superficial reforms could not substantiate long-term resilience."
+    },
+    {
+      "lemma": "superficial",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Officials pledged to mitigate the worst effects of warming, but critics argued that superficial reforms could not substantiate long-term resilience."
+    },
+    {
+      "lemma": "agenda",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Delegates said financing remained the most contentious issue on the agenda, with several states yet to ratify the amended treaty."
+    },
+    {
+      "lemma": "amend",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Delegates said financing remained the most contentious issue on the agenda, with several states yet to ratify the amended treaty."
+    },
+    {
+      "lemma": "analyst",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Analysts warned that without a coherent framework, disparities in funding would widen further."
+    },
+    {
+      "lemma": "argue",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Officials pledged to mitigate the worst effects of warming, but critics argued that superficial reforms could not substantiate long-term resilience."
+    },
+    {
+      "lemma": "climate",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "World leaders gathered in Geneva on Thursday as a climate summit opened amid mounting pressure to reach a deal."
+    },
+    {
+      "lemma": "critic",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Officials pledged to mitigate the worst effects of warming, but critics argued that superficial reforms could not substantiate long-term resilience."
+    },
+    {
+      "lemma": "deal",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "World leaders gathered in Geneva on Thursday as a climate summit opened amid mounting pressure to reach a deal."
+    },
+    {
+      "lemma": "economy",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "The talks are expected to set a precedent for how emerging economies participate in future negotiations."
+    },
+    {
+      "lemma": "effect",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Officials pledged to mitigate the worst effects of warming, but critics argued that superficial reforms could not substantiate long-term resilience."
+    },
+    {
+      "lemma": "emerge",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "The talks are expected to set a precedent for how emerging economies participate in future negotiations."
+    },
+    {
+      "lemma": "expect",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "The talks are expected to set a precedent for how emerging economies participate in future negotiations."
+    },
+    {
+      "lemma": "funding",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Analysts warned that without a coherent framework, disparities in funding would widen further."
+    },
+    {
+      "lemma": "future",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.0,
+      "sample": "The talks are expected to set a precedent for how emerging economies participate in future negotiations."
+    },
+    {
+      "lemma": "gather",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "World leaders gathered in Geneva on Thursday as a climate summit opened amid mounting pressure to reach a deal."
+    },
+    {
+      "lemma": "issue",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Delegates said financing remained the most contentious issue on the agenda, with several states yet to ratify the amended treaty."
+    },
+    {
+      "lemma": "leader",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "World leaders gathered in Geneva on Thursday as a climate summit opened amid mounting pressure to reach a deal."
+    },
+    {
+      "lemma": "long",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Officials pledged to mitigate the worst effects of warming, but critics argued that superficial reforms could not substantiate long-term resilience."
+    },
+    {
+      "lemma": "mount",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "World leaders gathered in Geneva on Thursday as a climate summit opened amid mounting pressure to reach a deal."
+    },
+    {
+      "lemma": "open",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "World leaders gathered in Geneva on Thursday as a climate summit opened amid mounting pressure to reach a deal."
+    },
+    {
+      "lemma": "pledge",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Officials pledged to mitigate the worst effects of warming, but critics argued that superficial reforms could not substantiate long-term resilience."
+    },
+    {
+      "lemma": "ratify",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Delegates said financing remained the most contentious issue on the agenda, with several states yet to ratify the amended treaty."
+    },
+    {
+      "lemma": "reach",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "World leaders gathered in Geneva on Thursday as a climate summit opened amid mounting pressure to reach a deal."
+    },
+    {
+      "lemma": "reform",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Officials pledged to mitigate the worst effects of warming, but critics argued that superficial reforms could not substantiate long-term resilience."
+    },
+    {
+      "lemma": "remain",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Delegates said financing remained the most contentious issue on the agenda, with several states yet to ratify the amended treaty."
+    },
+    {
+      "lemma": "state",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Delegates said financing remained the most contentious issue on the agenda, with several states yet to ratify the amended treaty."
+    },
+    {
+      "lemma": "summit",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "World leaders gathered in Geneva on Thursday as a climate summit opened amid mounting pressure to reach a deal."
+    },
+    {
+      "lemma": "talk",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "The talks are expected to set a precedent for how emerging economies participate in future negotiations."
+    },
+    {
+      "lemma": "term",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Officials pledged to mitigate the worst effects of warming, but critics argued that superficial reforms could not substantiate long-term resilience."
+    },
+    {
+      "lemma": "treaty",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Delegates said financing remained the most contentious issue on the agenda, with several states yet to ratify the amended treaty."
+    },
+    {
+      "lemma": "warming",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Officials pledged to mitigate the worst effects of warming, but critics argued that superficial reforms could not substantiate long-term resilience."
+    },
+    {
+      "lemma": "warn",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Analysts warned that without a coherent framework, disparities in funding would widen further."
+    },
+    {
+      "lemma": "widen",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Analysts warned that without a coherent framework, disparities in funding would widen further."
+    },
+    {
+      "lemma": "world",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "World leaders gathered in Geneva on Thursday as a climate summit opened amid mounting pressure to reach a deal."
+    }
+  ],
+  "warnings": []
+}

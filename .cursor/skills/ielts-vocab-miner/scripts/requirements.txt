@@ -1,0 +1,7 @@
+yt-dlp>=2024.1.1
+youtube-transcript-api>=1.0.0
+trafilatura>=1.6.0
+lxml_html_clean>=0.4.0
+# spaCy optional (Python 3.10+); scripts fall back to regex if unavailable
+spacy>=3.6.0,<3.7.0; python_version < "3.10"
+spacy>=3.7.0,<3.9.0; python_version >= "3.10"

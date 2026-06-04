@@ -1,0 +1,570 @@
+{
+  "title": "One killed and dozens injured in Iranian drone strikes on Kuwait airport",
+  "url": "https://www.bbc.com/news/articles/c5yx135yg53o",
+  "date": "2026-06-02",
+  "source_type": "article",
+  "text": "One killed and dozens injured in Iranian drone strikes on Kuwait airport\nOne person has been killed and more than 60 injured in Iranian drone strikes on Kuwait's international airport, local officials have said.\nKuwait's defence ministry spokesman called Wednesday's attack \"criminal Iranian aggression\", while the foreign ministry said diplomatic missions had been damaged.\nLater on Wednesday, Iran's Islamic Revolution Guard Corps (IRGC) denied responsibility for the airport strike, claiming the damage was caused by an error from a US missile interceptor.\nUS Central Command (Centcom) said this was false and claimed Iran struck the airport in a \"deliberate, calculated and unjustified attack\".\nThe IRGC had earlier said it targeted US bases in the Gulf in retaliation for US strikes on an Iranian oil tanker and Qeshm Island.\nThe US said it had launched \"self-defence\" strikes on Iran, and shot down or intercepted Iranian missiles fired at Kuwait and Bahrain.\nIran also claimed on Wednesday it targeted a US navy ship in the Gulf of Oman, which was also denied by Centcom.\nThe latest escalation threatens a shaky US-Iran ceasefire.\nThe person who was killed in the Iranian attack on Kuwait's airport was later identified as an Indian citizen.\nIn a statement, the Indian foreign ministry condemned the attack, saying that several other Indian nationals were injured.\n\"We again call upon parties to cease such attacks,\" the statement added.\nFollowing the strikes, Kuwait's foreign ministry ordered two Iranian diplomats to leave the country within 24 hours, and summoned Iran's charge d'affaires.\nEarlier, Centcom said that its overnight strikes on Qeshm Island, in the Strait of Hormuz, were \"in response to attempted attacks by Iran across the Middle East\" and targeted an Iranian military ground control station.\nIt also said that the US shot down three attack drones that had been launched by Iran toward \"civilian mariners that were rightfully transiting regional waters\".\nCentcom added that Iran had fired two missiles at Kuwait and three at Bahrain, all of which broke apart or were intercepted.\nIran said it had attacked US bases and helicopters in a \"regional country\" using missiles and drones in retaliation.\nCentcom earlier said it had struck and \"disabled\" an unladen oil tanker that was sailing towards Iran, as part of the US naval blockade on the Strait of Hormuz, which began on 13 April.\nA US aircraft fired a Hellfire missile into the engine room of the Botswana-flagged M/T vessel, after its crew \"ignored repeated warnings\", it said.\nThe IRGC immediately vowed retaliation, saying that \"disrupting the security of the Strait of Hormuz will carry a heavy price for the aggressive US military\".\nIn Tehran, the foreign ministry said in a statement that the leaders of Kuwait and Bahrain had \"direct and unmistakable responsibility\" for \"last night's acts of aggression\", according to AFP news agency.\nIran has repeatedly attacked targets in Bahrain and Kuwait, where US military bases are located.\nThe attacks happened as ceasefire negotiations between the US and Iran stalled, with a deal to end the war failing to advance over the weekend.\nUS President Donald Trump this week told his critics to \"sit back and relax\", saying that Iran \"really wants to make a deal, and it will be a good one for the USA\".\nUS media earlier reported that Trump had requested edits to the terms of a potential peace deal, after meeting with senior aides to discuss extending the framework of a ceasefire.\nThe changes related to the Strait of Hormuz and the removal of highly enriched uranium from Iran, the BBC's US news partner CBS News reported - as well as a framework to reopen negotiations on Iran's nuclear programme.\nOn Monday, Iran's foreign ministry spokesman Esmail Baghaei denied this had been on the table, adding that Washington was \"constantly changing its views and putting forward new or contradictory demands\".\nIn an interview aired on Wednesday, Trump said Iran had \"already agreed\" to not have a nuclear weapon.\nTrump said Iran's supreme leader, Ayatollah Mojtaba Khamenei, was \"involved\" in the talks.\n\"We seem to be getting along quite well,\" Trump told the Pod Force One podcast.\nAsked if he would like to meet him, he said: \"I'd like to meet him. We probably will meet at some point, depending on how it all works out.\"\nUS Secretary of State Marco Rubio told Congress on Tuesday that negotiators had not offered Iran sanctions relief in exchange for reopening the strait.\n\"Right now, everything that's been discussed with them is that … any sanctions relief is condition-based, which means it has to be in return for the reason why those sanctions were put in place in the first place, which is their nuclear programme,\" he said.\n\"The war is over,\" he said in another tense exchange with a senator, as lawmakers on the committee questioned the US strategy for ending the conflict.",
+  "candidates": [
+    {
+      "lemma": "attack",
+      "pos": "NOUN",
+      "count": 8,
+      "score": 9.0,
+      "sample": "Kuwait's defence ministry spokesman called Wednesday's attack \"criminal Iranian aggression\", while the foreign ministry said diplomatic missions had been damaged."
+    },
+    {
+      "lemma": "iranian",
+      "pos": "ADJ",
+      "count": 8,
+      "score": 9.0,
+      "sample": "One killed and dozens injured in Iranian drone strikes on Kuwait airport"
+    },
+    {
+      "lemma": "strike",
+      "pos": "NOUN",
+      "count": 7,
+      "score": 8.0,
+      "sample": "One killed and dozens injured in Iranian drone strikes on Kuwait airport"
+    },
+    {
+      "lemma": "missile",
+      "pos": "NOUN",
+      "count": 5,
+      "score": 6.0,
+      "sample": "Later on Wednesday, Iran's Islamic Revolution Guard Corps (IRGC) denied responsibility for the airport strike, claiming the damage was caused by an error from a US missile interceptor."
+    },
+    {
+      "lemma": "airport",
+      "pos": "NOUN",
+      "count": 4,
+      "score": 5.0,
+      "sample": "One person has been killed and more than 60 injured in Iranian drone strikes on Kuwait's international airport, local officials have said."
+    },
+    {
+      "lemma": "drone",
+      "pos": "NOUN",
+      "count": 4,
+      "score": 5.0,
+      "sample": "One killed and dozens injured in Iranian drone strikes on Kuwait airport"
+    },
+    {
+      "lemma": "early",
+      "pos": "ADV",
+      "count": 4,
+      "score": 5.0,
+      "sample": "The IRGC had earlier said it targeted US bases in the Gulf in retaliation for US strikes on an Iranian oil tanker and Qeshm Island."
+    },
+    {
+      "lemma": "foreign",
+      "pos": "ADJ",
+      "count": 4,
+      "score": 5.0,
+      "sample": "Kuwait's defence ministry spokesman called Wednesday's attack \"criminal Iranian aggression\", while the foreign ministry said diplomatic missions had been damaged."
+    },
+    {
+      "lemma": "meet",
+      "pos": "VERB",
+      "count": 4,
+      "score": 5.0,
+      "sample": "Asked if he would like to meet him, he said: \"I'd like to meet him."
+    },
+    {
+      "lemma": "ceasefire",
+      "pos": "NOUN",
+      "count": 3,
+      "score": 4.5,
+      "sample": "The latest escalation threatens a shaky US-Iran ceasefire."
+    },
+    {
+      "lemma": "retaliation",
+      "pos": "NOUN",
+      "count": 3,
+      "score": 4.5,
+      "sample": "The IRGC had earlier said it targeted US bases in the Gulf in retaliation for US strikes on an Iranian oil tanker and Qeshm Island."
+    },
+    {
+      "lemma": "sanction",
+      "pos": "NOUN",
+      "count": 3,
+      "score": 4.5,
+      "sample": "\"\nUS Secretary of State Marco Rubio told Congress on Tuesday that negotiators had not offered Iran sanctions relief in exchange for reopening the strait."
+    },
+    {
+      "lemma": "statement",
+      "pos": "NOUN",
+      "count": 3,
+      "score": 4.5,
+      "sample": "In a statement, the Indian foreign ministry condemned the attack, saying that several other Indian nationals were injured."
+    },
+    {
+      "lemma": "basis",
+      "pos": "NOUN",
+      "count": 3,
+      "score": 4.0,
+      "sample": "The IRGC had earlier said it targeted US bases in the Gulf in retaliation for US strikes on an Iranian oil tanker and Qeshm Island."
+    },
+    {
+      "lemma": "claim",
+      "pos": "VERB",
+      "count": 3,
+      "score": 4.0,
+      "sample": "Later on Wednesday, Iran's Islamic Revolution Guard Corps (IRGC) denied responsibility for the airport strike, claiming the damage was caused by an error from a US missile interceptor."
+    },
+    {
+      "lemma": "deal",
+      "pos": "NOUN",
+      "count": 3,
+      "score": 4.0,
+      "sample": "The attacks happened as ceasefire negotiations between the US and Iran stalled, with a deal to end the war failing to advance over the weekend."
+    },
+    {
+      "lemma": "deny",
+      "pos": "VERB",
+      "count": 3,
+      "score": 4.0,
+      "sample": "Later on Wednesday, Iran's Islamic Revolution Guard Corps (IRGC) denied responsibility for the airport strike, claiming the damage was caused by an error from a US missile interceptor."
+    },
+    {
+      "lemma": "fire",
+      "pos": "VERB",
+      "count": 3,
+      "score": 4.0,
+      "sample": "The US said it had launched \"self-defence\" strikes on Iran, and shot down or intercepted Iranian missiles fired at Kuwait and Bahrain."
+    },
+    {
+      "lemma": "indian",
+      "pos": "ADJ",
+      "count": 3,
+      "score": 4.0,
+      "sample": "The person who was killed in the Iranian attack on Kuwait's airport was later identified as an Indian citizen."
+    },
+    {
+      "lemma": "injure",
+      "pos": "VERB",
+      "count": 3,
+      "score": 4.0,
+      "sample": "One killed and dozens injured in Iranian drone strikes on Kuwait airport"
+    },
+    {
+      "lemma": "kill",
+      "pos": "VERB",
+      "count": 3,
+      "score": 4.0,
+      "sample": "One killed and dozens injured in Iranian drone strikes on Kuwait airport"
+    },
+    {
+      "lemma": "nuclear",
+      "pos": "ADJ",
+      "count": 3,
+      "score": 4.0,
+      "sample": "In an interview aired on Wednesday, Trump said Iran had \"already agreed\" to not have a nuclear weapon."
+    },
+    {
+      "lemma": "target",
+      "pos": "VERB",
+      "count": 3,
+      "score": 4.0,
+      "sample": "The IRGC had earlier said it targeted US bases in the Gulf in retaliation for US strikes on an Iranian oil tanker and Qeshm Island."
+    },
+    {
+      "lemma": "tell",
+      "pos": "VERB",
+      "count": 3,
+      "score": 4.0,
+      "sample": "\"We seem to be getting along quite well,\" Trump told the Pod Force One podcast."
+    },
+    {
+      "lemma": "aggression",
+      "pos": "NOUN",
+      "count": 2,
+      "score": 3.5,
+      "sample": "Kuwait's defence ministry spokesman called Wednesday's attack \"criminal Iranian aggression\", while the foreign ministry said diplomatic missions had been damaged."
+    },
+    {
+      "lemma": "exchange",
+      "pos": "NOUN",
+      "count": 2,
+      "score": 3.5,
+      "sample": "\"\nUS Secretary of State Marco Rubio told Congress on Tuesday that negotiators had not offered Iran sanctions relief in exchange for reopening the strait."
+    },
+    {
+      "lemma": "framework",
+      "pos": "NOUN",
+      "count": 2,
+      "score": 3.5,
+      "sample": ""
+    },
+    {
+      "lemma": "intercept",
+      "pos": "VERB",
+      "count": 2,
+      "score": 3.5,
+      "sample": "The US said it had launched \"self-defence\" strikes on Iran, and shot down or intercepted Iranian missiles fired at Kuwait and Bahrain."
+    },
+    {
+      "lemma": "military",
+      "pos": "NOUN",
+      "count": 2,
+      "score": 3.5,
+      "sample": "The IRGC immediately vowed retaliation, saying that \"disrupting the security of the Strait of Hormuz will carry a heavy price for the aggressive US military\"."
+    },
+    {
+      "lemma": "negotiation",
+      "pos": "NOUN",
+      "count": 2,
+      "score": 3.5,
+      "sample": "The attacks happened as ceasefire negotiations between the US and Iran stalled, with a deal to end the war failing to advance over the weekend."
+    },
+    {
+      "lemma": "programme",
+      "pos": "NOUN",
+      "count": 2,
+      "score": 3.5,
+      "sample": ""
+    },
+    {
+      "lemma": "regional",
+      "pos": "ADJ",
+      "count": 2,
+      "score": 3.5,
+      "sample": "It also said that the US shot down three attack drones that had been launched by Iran toward \"civilian mariners that were rightfully transiting regional waters\"."
+    },
+    {
+      "lemma": "response",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 3.5,
+      "sample": ""
+    },
+    {
+      "lemma": "responsibility",
+      "pos": "NOUN",
+      "count": 2,
+      "score": 3.5,
+      "sample": "Later on Wednesday, Iran's Islamic Revolution Guard Corps (IRGC) denied responsibility for the airport strike, claiming the damage was caused by an error from a US missile interceptor."
+    },
+    {
+      "lemma": "spokesman",
+      "pos": "NOUN",
+      "count": 2,
+      "score": 3.5,
+      "sample": "Kuwait's defence ministry spokesman called Wednesday's attack \"criminal Iranian aggression\", while the foreign ministry said diplomatic missions had been damaged."
+    },
+    {
+      "lemma": "attack",
+      "pos": "VERB",
+      "count": 2,
+      "score": 3.0,
+      "sample": "Iran said it had attacked US bases and helicopters in a \"regional country\" using missiles and drones in retaliation."
+    },
+    {
+      "lemma": "country",
+      "pos": "NOUN",
+      "count": 2,
+      "score": 3.0,
+      "sample": "Following the strikes, Kuwait's foreign ministry ordered two Iranian diplomats to leave the country within 24 hours, and summoned Iran's charge d'affaires."
+    },
+    {
+      "lemma": "discuss",
+      "pos": "VERB",
+      "count": 2,
+      "score": 3.0,
+      "sample": ""
+    },
+    {
+      "lemma": "irgc",
+      "pos": "NOUN",
+      "count": 2,
+      "score": 3.0,
+      "sample": "The IRGC had earlier said it targeted US bases in the Gulf in retaliation for US strikes on an Iranian oil tanker and Qeshm Island."
+    },
+    {
+      "lemma": "later",
+      "pos": "ADV",
+      "count": 2,
+      "score": 3.0,
+      "sample": "Later on Wednesday, Iran's Islamic Revolution Guard Corps (IRGC) denied responsibility for the airport strike, claiming the damage was caused by an error from a US missile interceptor."
+    },
+    {
+      "lemma": "launch",
+      "pos": "VERB",
+      "count": 2,
+      "score": 3.0,
+      "sample": "The US said it had launched \"self-defence\" strikes on Iran, and shot down or intercepted Iranian missiles fired at Kuwait and Bahrain."
+    },
+    {
+      "lemma": "leader",
+      "pos": "NOUN",
+      "count": 2,
+      "score": 3.0,
+      "sample": "Trump said Iran's supreme leader, Ayatollah Mojtaba Khamenei, was \"involved\" in the talks."
+    },
+    {
+      "lemma": "like",
+      "pos": "VERB",
+      "count": 2,
+      "score": 3.0,
+      "sample": "Asked if he would like to meet him, he said: \"I'd like to meet him."
+    },
+    {
+      "lemma": "news",
+      "pos": "NOUN",
+      "count": 2,
+      "score": 3.0,
+      "sample": ""
+    },
+    {
+      "lemma": "person",
+      "pos": "NOUN",
+      "count": 2,
+      "score": 3.0,
+      "sample": "One person has been killed and more than 60 injured in Iranian drone strikes on Kuwait's international airport, local officials have said."
+    },
+    {
+      "lemma": "place",
+      "pos": "NOUN",
+      "count": 2,
+      "score": 3.0,
+      "sample": ""
+    },
+    {
+      "lemma": "relief",
+      "pos": "NOUN",
+      "count": 2,
+      "score": 3.0,
+      "sample": "\"\nUS Secretary of State Marco Rubio told Congress on Tuesday that negotiators had not offered Iran sanctions relief in exchange for reopening the strait."
+    },
+    {
+      "lemma": "reopen",
+      "pos": "VERB",
+      "count": 2,
+      "score": 3.0,
+      "sample": "\"\nUS Secretary of State Marco Rubio told Congress on Tuesday that negotiators had not offered Iran sanctions relief in exchange for reopening the strait."
+    },
+    {
+      "lemma": "report",
+      "pos": "VERB",
+      "count": 2,
+      "score": 3.0,
+      "sample": ""
+    },
+    {
+      "lemma": "shoot",
+      "pos": "VERB",
+      "count": 2,
+      "score": 3.0,
+      "sample": "The US said it had launched \"self-defence\" strikes on Iran, and shot down or intercepted Iranian missiles fired at Kuwait and Bahrain."
+    },
+    {
+      "lemma": "strike",
+      "pos": "VERB",
+      "count": 2,
+      "score": 3.0,
+      "sample": "US Central Command (Centcom) said this was false and claimed Iran struck the airport in a \"deliberate, calculated and unjustified attack\"."
+    },
+    {
+      "lemma": "tanker",
+      "pos": "NOUN",
+      "count": 2,
+      "score": 3.0,
+      "sample": "The IRGC had earlier said it targeted US bases in the Gulf in retaliation for US strikes on an Iranian oil tanker and Qeshm Island."
+    },
+    {
+      "lemma": "aggressive",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": "The IRGC immediately vowed retaliation, saying that \"disrupting the security of the Strait of Hormuz will carry a heavy price for the aggressive US military\"."
+    },
+    {
+      "lemma": "aircraft",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "A US aircraft fired a Hellfire missile into the engine room of the Botswana-flagged M/T vessel, after its crew \"ignored repeated warnings\", it said."
+    },
+    {
+      "lemma": "blockade",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Centcom earlier said it had struck and \"disabled\" an unladen oil tanker that was sailing towards Iran, as part of the US naval blockade on the Strait of Hormuz, which began on 13 April."
+    },
+    {
+      "lemma": "calculated",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": "US Central Command (Centcom) said this was false and claimed Iran struck the airport in a \"deliberate, calculated and unjustified attack\"."
+    },
+    {
+      "lemma": "civilian",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": "It also said that the US shot down three attack drones that had been launched by Iran toward \"civilian mariners that were rightfully transiting regional waters\"."
+    },
+    {
+      "lemma": "committee",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "\"The war is over,\" he said in another tense exchange with a senator, as lawmakers on the committee questioned the US strategy for ending the conflict."
+    },
+    {
+      "lemma": "condition",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": ""
+    },
+    {
+      "lemma": "conflict",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "\"The war is over,\" he said in another tense exchange with a senator, as lawmakers on the committee questioned the US strategy for ending the conflict."
+    },
+    {
+      "lemma": "constantly",
+      "pos": "ADV",
+      "count": 1,
+      "score": 1.5,
+      "sample": ""
+    },
+    {
+      "lemma": "contradictory",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": ""
+    },
+    {
+      "lemma": "criminal",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Kuwait's defence ministry spokesman called Wednesday's attack \"criminal Iranian aggression\", while the foreign ministry said diplomatic missions had been damaged."
+    },
+    {
+      "lemma": "deliberate",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": "US Central Command (Centcom) said this was false and claimed Iran struck the airport in a \"deliberate, calculated and unjustified attack\"."
+    },
+    {
+      "lemma": "diplomat",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Following the strikes, Kuwait's foreign ministry ordered two Iranian diplomats to leave the country within 24 hours, and summoned Iran's charge d'affaires."
+    },
+    {
+      "lemma": "diplomatic",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Kuwait's defence ministry spokesman called Wednesday's attack \"criminal Iranian aggression\", while the foreign ministry said diplomatic missions had been damaged."
+    },
+    {
+      "lemma": "enriched",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": ""
+    },
+    {
+      "lemma": "escalation",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "The latest escalation threatens a shaky US-Iran ceasefire."
+    },
+    {
+      "lemma": "helicopter",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Iran said it had attacked US bases and helicopters in a \"regional country\" using missiles and drones in retaliation."
+    },
+    {
+      "lemma": "identify",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.5,
+      "sample": "The person who was killed in the Iranian attack on Kuwait's airport was later identified as an Indian citizen."
+    },
+    {
+      "lemma": "immediately",
+      "pos": "ADV",
+      "count": 1,
+      "score": 1.5,
+      "sample": "The IRGC immediately vowed retaliation, saying that \"disrupting the security of the Strait of Hormuz will carry a heavy price for the aggressive US military\"."
+    },
+    {
+      "lemma": "interceptor",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Later on Wednesday, Iran's Islamic Revolution Guard Corps (IRGC) denied responsibility for the airport strike, claiming the damage was caused by an error from a US missile interceptor."
+    },
+    {
+      "lemma": "international",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": "One person has been killed and more than 60 injured in Iranian drone strikes on Kuwait's international airport, local officials have said."
+    },
+    {
+      "lemma": "interview",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "In an interview aired on Wednesday, Trump said Iran had \"already agreed\" to not have a nuclear weapon."
+    },
+    {
+      "lemma": "lawmaker",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "\"The war is over,\" he said in another tense exchange with a senator, as lawmakers on the committee questioned the US strategy for ending the conflict."
+    },
+    {
+      "lemma": "military",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": ""
+    },
+    {
+      "lemma": "national",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "In a statement, the Indian foreign ministry condemned the attack, saying that several other Indian nationals were injured."
+    },
+    {
+      "lemma": "negotiator",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "\"\nUS Secretary of State Marco Rubio told Congress on Tuesday that negotiators had not offered Iran sanctions relief in exchange for reopening the strait."
+    },
+    {
+      "lemma": "official",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "One person has been killed and more than 60 injured in Iranian drone strikes on Kuwait's international airport, local officials have said."
+    },
+    {
+      "lemma": "overnight",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": ""
+    }
+  ],
+  "warnings": []
+}

@@ -1,0 +1,248 @@
+{
+  "title": "Climate policy debate (sample subtitles)",
+  "url": "https://www.youtube.com/watch?v=sample-verification",
+  "date": "2026-06-04",
+  "source_type": "local",
+  "text": "We need to mitigate the environmental impact of rapid urbanisation. Policy makers face mounting pressure to ratify ambitious climate agreements. The issue remains contentious among delegates from emerging economies. Without a coherent framework, disparities in funding will only widen. Analysts caution that superficial reforms cannot substantiate long-term resilience.",
+  "candidates": [
+    {
+      "lemma": "policy",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 3.0,
+      "sample": "Policy makers face mounting pressure to ratify ambitious climate agreements."
+    },
+    {
+      "lemma": "agreement",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Policy makers face mounting pressure to ratify ambitious climate agreements."
+    },
+    {
+      "lemma": "ambitious",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Policy makers face mounting pressure to ratify ambitious climate agreements."
+    },
+    {
+      "lemma": "coherent",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Without a coherent framework, disparities in funding will only widen."
+    },
+    {
+      "lemma": "contentious",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": "The issue remains contentious among delegates from emerging economies."
+    },
+    {
+      "lemma": "delegate",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "The issue remains contentious among delegates from emerging economies."
+    },
+    {
+      "lemma": "disparity",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Without a coherent framework, disparities in funding will only widen."
+    },
+    {
+      "lemma": "environmental",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": "We need to mitigate the environmental impact of rapid urbanisation."
+    },
+    {
+      "lemma": "framework",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Without a coherent framework, disparities in funding will only widen."
+    },
+    {
+      "lemma": "mitigate",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.5,
+      "sample": "We need to mitigate the environmental impact of rapid urbanisation."
+    },
+    {
+      "lemma": "pressure",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Policy makers face mounting pressure to ratify ambitious climate agreements."
+    },
+    {
+      "lemma": "resilience",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Analysts caution that superficial reforms cannot substantiate long-term resilience."
+    },
+    {
+      "lemma": "substantiate",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Analysts caution that superficial reforms cannot substantiate long-term resilience."
+    },
+    {
+      "lemma": "superficial",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.5,
+      "sample": "Analysts caution that superficial reforms cannot substantiate long-term resilience."
+    },
+    {
+      "lemma": "urbanisation",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.5,
+      "sample": "We need to mitigate the environmental impact of rapid urbanisation."
+    },
+    {
+      "lemma": "analyst",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Analysts caution that superficial reforms cannot substantiate long-term resilience."
+    },
+    {
+      "lemma": "caution",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Analysts caution that superficial reforms cannot substantiate long-term resilience."
+    },
+    {
+      "lemma": "climate",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Policy makers face mounting pressure to ratify ambitious climate agreements."
+    },
+    {
+      "lemma": "economy",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "The issue remains contentious among delegates from emerging economies."
+    },
+    {
+      "lemma": "emerge",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "The issue remains contentious among delegates from emerging economies."
+    },
+    {
+      "lemma": "face",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Policy makers face mounting pressure to ratify ambitious climate agreements."
+    },
+    {
+      "lemma": "funding",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Without a coherent framework, disparities in funding will only widen."
+    },
+    {
+      "lemma": "impact",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "We need to mitigate the environmental impact of rapid urbanisation."
+    },
+    {
+      "lemma": "issue",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "The issue remains contentious among delegates from emerging economies."
+    },
+    {
+      "lemma": "long",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Analysts caution that superficial reforms cannot substantiate long-term resilience."
+    },
+    {
+      "lemma": "maker",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Policy makers face mounting pressure to ratify ambitious climate agreements."
+    },
+    {
+      "lemma": "mount",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Policy makers face mounting pressure to ratify ambitious climate agreements."
+    },
+    {
+      "lemma": "need",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "We need to mitigate the environmental impact of rapid urbanisation."
+    },
+    {
+      "lemma": "rapid",
+      "pos": "ADJ",
+      "count": 1,
+      "score": 1.0,
+      "sample": "We need to mitigate the environmental impact of rapid urbanisation."
+    },
+    {
+      "lemma": "ratify",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Policy makers face mounting pressure to ratify ambitious climate agreements."
+    },
+    {
+      "lemma": "reform",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Analysts caution that superficial reforms cannot substantiate long-term resilience."
+    },
+    {
+      "lemma": "remain",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "The issue remains contentious among delegates from emerging economies."
+    },
+    {
+      "lemma": "term",
+      "pos": "NOUN",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Analysts caution that superficial reforms cannot substantiate long-term resilience."
+    },
+    {
+      "lemma": "widen",
+      "pos": "VERB",
+      "count": 1,
+      "score": 1.0,
+      "sample": "Without a coherent framework, disparities in funding will only widen."
+    }
+  ],
+  "warnings": []
+}
