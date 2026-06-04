@@ -59,7 +59,7 @@ TED on ted.com: try `fetch_content.py` first; if it fails, ask user for the YouT
 From repo root (requires network for URLs):
 
 ```bash
-cd .cursor/skills/ielts-vocab-miner/scripts
+cd .claude/skills/ielts-vocab-miner/scripts
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m spacy download en_core_web_sm   # optional; Python 3.10+ only
 
@@ -125,8 +125,8 @@ ielts-vocab/review.sh 3      # review 3 random pending files
 Or directly:
 
 ```bash
-.cursor/skills/ielts-vocab-miner/scripts/.venv/bin/python \
-  .cursor/skills/ielts-vocab-miner/scripts/review_vocab.py -n 3 \
+.claude/skills/ielts-vocab-miner/scripts/.venv/bin/python \
+  .claude/skills/ielts-vocab-miner/scripts/review_vocab.py -n 3 \
   --pending-dir ielts-vocab/pending --reviewed-dir ielts-vocab/reviewed
 ```
 
