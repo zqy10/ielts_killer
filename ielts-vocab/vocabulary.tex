@@ -19,7 +19,10 @@
 
 % ---------- 字体 ----------
 \setmainfont{Times New Roman}
-\setCJKmainfont{FandolSong}
+% 显式指定粗体字族：FandolSong 的 Regular 与 Bold 是两个独立 .otf，
+% Overleaf 的 TeXLive 能自动配对，但本地 XeLaTeX/Tectonic 不会，
+% 不指定 BoldFont 时 \bfseries 中文会回退为常规字重（看不出加粗）。
+\setCJKmainfont{FandolSong}[BoldFont={FandolSong Bold}]
 % Charis SIL 完整支持 IPA Unicode，Overleaf 内置
 \newfontfamily\ipafont{Charis SIL}
 \newcommand{\ipa}[1]{{\ipafont #1}}
