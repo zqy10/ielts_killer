@@ -40,17 +40,18 @@ Agent: read this file before curating vocabulary when it exists.
 - `facilitate` (penalty 0.7)
 
 ## Hard reject list
-`aggression`, `bushmeat`, `captivity`, `ceasefire`, `conceal`, `disloyalty`, `facilitate`, `fertile`, `fortify`, `hawk`, `hesitant`, `intelligence-led`, `legitimate`, `liberate`, `nationalism`, `overextended`, `populous`, `refuge`, `reliant`, `strategic`, `unification`
+`acknowledge`, `aggression`, `antifragile`, `bushmeat`, `captivity`, `ceasefire`, `coherent`, `combative`, `conceal`, `confrontational`, `departure`, `disloyalty`, `emerging`, `facilitate`, `fertile`, `figurative`, `financing`, `fortify`, `fragmented`, `friction`, `harness`, `hawk`, `heartwarming`, `hesitant`, `intelligence-led`, `interpersonal`, `legitimate`, `liberate`, `mitigate`, `mounting`
 
 ## POS preference
-- NOUN: 0.523
-- ADJ: 0.224
-- VERB: 0.13
-- PHR: 0.066
+- NOUN: 0.438
+- ADJ: 0.334
+- VERB: 0.138
+- PHR: 0.046
 - N./ADJ.: 0.038
 - N./V.: 0.038
+- ADV: 0.023
 
 ## Recent review sessions
-- 2026-06-04: kept 14, rejected 12, lr=80 — `x-XdOaZPhBw-2026-06-04.tex`
 - 2026-06-04: kept 17, rejected 5, lr=70 — `pangolin-rehabilitation-2026-06-04.tex`
 - 2026-06-04: kept 22, rejected 3, lr=70 — `bq66pBjvuNw.tex`
+- 2026-06-05: kept 28, rejected 32, lr=65 — `(db review)`
