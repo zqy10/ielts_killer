@@ -41,8 +41,19 @@ Task Progress:
 - [ ] Step 3: Curate ~50% Track A + ~50% Track B (Band 8.5+)
 - [ ] Step 4: Write .tex with \vocabsource + \vocabentry blocks
 - [ ] Step 5: Run quality checklist
-- [ ] Step 6 (optional): Human review + update learned preferences
+- [ ] Step 6: **You (agent) ingest** the `.tex` into the DB + regenerate vocabulary.tex — run automatically, no human gate
+- [ ] Step 7 (optional, deferrable, **human-run**): review unreviewed words + learned preferences
 ```
+
+> **Two separate workflows.** Generation (Steps 1–6) is fully automatic and ends
+> with **you running the ingest yourself** — do not stop after writing the `.tex`
+> and do not ask the user to run a script. After the quality checklist passes,
+> invoke `ingest_vocab.py` (Step 6) to merge the pending `.tex` into the word
+> store and regenerate `vocabulary.tex`. Review (Step 7, `review.sh`) is the only
+> human-in-the-loop step and runs whenever the user chooses: it annotates the
+> *unreviewed* words already in the DB, keeps or **deletes** them, and learns
+> preferences. The DB (`ielts-vocab/vocab.db`) is authoritative; `vocabulary.tex`
+> is its rendered view.
 
 ### Step 1: Identify source
 
@@ -113,33 +124,52 @@ Escape LaTeX special chars if needed: `\`, `{`, `}`, `#`, `$`, `%`, `&`, `_`, `^
 - [ ] Band 8.5+: no cluster of easy news or pseudo-advanced words
 - [ ] 15–30 entries unless user asked otherwise
 
-### Step 6: Interactive review (optional)
+### Step 6: Ingest into the DB (you run this automatically)
 
-After writing `.tex` to `ielts-vocab/pending/`, user runs from repo root:
-
-```bash
-ielts-vocab/review.sh        # review 1 random pending file (default)
-ielts-vocab/review.sh 3      # review 3 random pending files
-```
-
-Or directly:
+**This is part of the mining run, not a separate task.** As soon as the `.tex`
+is written to `ielts-vocab/pending/` and the quality checklist passes, run the
+ingest yourself — no confirmation needed, no asking the user to run a script:
 
 ```bash
 .claude/skills/ielts-vocab-miner/scripts/.venv/bin/python \
-  .claude/skills/ielts-vocab-miner/scripts/review_vocab.py -n 3 \
-  --pending-dir ielts-vocab/pending --reviewed-dir ielts-vocab/reviewed
+  .claude/skills/ielts-vocab-miner/scripts/ingest_vocab.py \
+  --pending-dir ielts-vocab/pending --vocabulary ielts-vocab/vocabulary.tex
 ```
 
-Per entry: **Enter/换行 = 保留**, **空格 = 删除**, **q = 结束本文件** (remaining entries in that file are dropped).
+(`ielts-vocab/ingest.sh` is the same command wrapped for manual use; prefer
+calling `ingest_vocab.py` directly so the run is self-contained.)
 
-After all files in the session: enter **学习率 0–100** once (higher = stronger update to personal preferences).
+This merges every pending block into `ielts-vocab/vocab.db` as **unreviewed**
+words (`reviewed=0`), regenerates `vocabulary.tex` (video / article / book
+sections), then **deletes the pending source files** (the DB is authoritative).
+Words whose lemma is on the hard reject list (`reject_lemmas`) are skipped so
+rejected words don't reappear. On the first run the DB schema auto-migrates
+(adds the `reviewed` column).
 
-`review.sh` also runs `merge_vocab.py` to update `ielts-vocab/vocabulary.tex` (video / article / book sections).
+Then report to the user: how many new words were ingested, and remind them they
+can run `ielts-vocab/review.sh` (Step 7) anytime to curate.
+
+### Step 7: Interactive review (optional, can be deferred)
+
+Run anytime to curate the unreviewed words already in the DB:
+
+```bash
+ielts-vocab/review.sh        # review ALL unreviewed words in the DB
+```
+
+Per word: **Enter = 保留** (mark reviewed), **空格 = 删除** (remove from DB),
+**← = 回到上一个** (undo the previous word's label), **q = 结束** (stop early;
+undecided words stay unreviewed for next time).
+
+At the end: enter **学习率 0–100** once (higher = stronger update to personal
+preferences; default/recommended 65). Kept words are marked `reviewed=1`,
+rejected words are deleted from the DB (orphan sources pruned), and
+`vocabulary.tex` is regenerated.
 
 Outputs:
 
-- `ielts-vocab/reviewed/<file>.tex` — kept entries only
-- `ielts-vocab/vocabulary.tex` — merged master notebook
+- `ielts-vocab/vocab.db` — authoritative word store (updated in place)
+- `ielts-vocab/vocabulary.tex` — regenerated master notebook
 - `ielts-vocab/learner/preferences.json` — weights (gitignored)
 - `ielts-vocab/learner/learned-preferences.md` — Agent-readable summary
 
@@ -150,4 +180,4 @@ Full sample outputs: [examples.md](examples.md)
 ## Additional resources
 
 - Band 8.5+ rubric, exclude list, IPA, learner: [reference.md](reference.md)
-- Scripts: [fetch_content.py](scripts/fetch_content.py), [clean_text.py](scripts/clean_text.py), [review_vocab.py](scripts/review_vocab.py), [merge_vocab.py](scripts/merge_vocab.py), [learner.py](scripts/learner.py)
+- Scripts: [fetch_content.py](scripts/fetch_content.py), [clean_text.py](scripts/clean_text.py), [ingest_vocab.py](scripts/ingest_vocab.py), [review_vocab.py](scripts/review_vocab.py), [vocab_db.py](scripts/vocab_db.py), [learner.py](scripts/learner.py)

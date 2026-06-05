@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# 用法: ./review.sh [N]   从 pending/ 随机审查 N 个 tex，默认 N=1
+# 用法: ./review.sh   审核词库中所有「未审核」的词(保留/删除 + 偏好学习)
+# 保留→标记已审核;删除→从词库移除;结束后重新生成 vocabulary.tex。
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 REPO="$(cd "$ROOT/.." && pwd)"
@@ -12,11 +13,5 @@ if [[ ! -x "$PY" ]]; then
   exit 1
 fi
 
-N="${1:-1}"
-"$PY" "$SCRIPTS/review_vocab.py" -n "$N" \
-  --pending-dir "$ROOT/pending" \
-  --reviewed-dir "$ROOT/reviewed"
-"$PY" "$SCRIPTS/merge_vocab.py" \
-  --reviewed-dir "$ROOT/reviewed" \
+"$PY" "$SCRIPTS/review_vocab.py" \
   --vocabulary "$ROOT/vocabulary.tex"
-echo "完成。已更新 vocabulary.tex（已全局去重，词库 vocab.db）"

@@ -13,6 +13,7 @@ import time
 from pathlib import Path
 
 from learner import (
+    _lemma_key,
     classify_source_url,
     format_source_block,
     ielts_vocab_dir,
@@ -64,11 +65,25 @@ def init_db(conn: sqlite3.Connection) -> None:
             antonyms   TEXT,
             source_url TEXT,
             added_at   INTEGER,
-            ord        INTEGER
+            ord        INTEGER,
+            reviewed   INTEGER NOT NULL DEFAULT 0
         );
         """
     )
     conn.commit()
+    ensure_schema(conn)
+
+
+def ensure_schema(conn: sqlite3.Connection) -> None:
+    """Add columns missing from pre-existing DBs. Idempotent."""
+    cols = {row[1] for row in conn.execute("PRAGMA table_info(words)").fetchall()}
+    if "reviewed" not in cols:
+        # Existing words predate the review split; they are already curated, so
+        # backfill them as reviewed (=1). New ingests insert reviewed=0 explicitly.
+        conn.execute(
+            "ALTER TABLE words ADD COLUMN reviewed INTEGER NOT NULL DEFAULT 1"
+        )
+        conn.commit()
 
 
 def _next_ord(conn: sqlite3.Connection) -> int:
@@ -85,8 +100,16 @@ def ingest_blocks(
     conn: sqlite3.Connection,
     blocks: list[dict],
     default_meta: dict | None = None,
+    reviewed: int = 0,
+    reject_lemmas: set[str] | None = None,
 ) -> int:
-    """Upsert sources and de-duplicated words. Returns count of new words."""
+    """Upsert sources and de-duplicated words. Returns count of new words.
+
+    ``reviewed`` marks the review state of newly inserted words (0 = needs human
+    review, 1 = already curated). ``reject_lemmas`` are hard-rejected lemmas that
+    are skipped at ingest so rejected words don't reappear from later extractions.
+    """
+    reject_lemmas = reject_lemmas or set()
     new_words = 0
     ord_counter = _next_ord(conn)
     for block in blocks:
@@ -114,11 +137,13 @@ def ingest_blocks(
             wl = word.strip().lower()
             if not wl:
                 continue
+            if _lemma_key(word) in reject_lemmas:
+                continue
             cur = conn.execute(
                 "INSERT OR IGNORE INTO words "
                 "(word_lower, word, pos, ipa, gloss_zh, example, synonyms, "
-                " antonyms, source_url, added_at, ord) "
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                " antonyms, source_url, added_at, ord, reviewed) "
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (
                     wl,
                     word,
@@ -131,6 +156,7 @@ def ingest_blocks(
                     url,
                     int(time.time()),
                     ord_counter,
+                    reviewed,
                 ),
             )
             if cur.rowcount:
@@ -151,17 +177,90 @@ def migrate_from_tex(conn: sqlite3.Connection, vocabulary_path: Path) -> int:
         content = sections.get(cat, "")
         if section_is_placeholder(content):
             continue
-        total += ingest_blocks(conn, parse_source_blocks(content))
+        # Existing vocabulary.tex content is already curated → reviewed=1.
+        total += ingest_blocks(conn, parse_source_blocks(content), reviewed=1)
+    return total
+
+
+def import_pending(
+    conn: sqlite3.Connection,
+    pending: Path,
+    reject_lemmas: set[str] | None = None,
+) -> int:
+    """Ingest pending/*.tex as unreviewed words (reviewed=0), skipping reject_lemmas."""
+    total = 0
+    for tex_path in sorted(pending.glob("*.tex")):
+        content = tex_path.read_text(encoding="utf-8")
+        meta = load_sidecar_meta(tex_path)
+        total += ingest_blocks(
+            conn,
+            parse_source_blocks(content),
+            meta,
+            reviewed=0,
+            reject_lemmas=reject_lemmas,
+        )
     return total
 
 
 def import_reviewed(conn: sqlite3.Connection, reviewed: Path) -> int:
+    """Legacy: ingest reviewed/*.tex as curated words (reviewed=1).
+
+    No longer used by the split workflow (review now operates on the DB), kept
+    for backward compatibility and one-off re-seeding.
+    """
     total = 0
     for tex_path in sorted(reviewed.glob("*.tex")):
         content = tex_path.read_text(encoding="utf-8")
         meta = load_sidecar_meta(tex_path)
-        total += ingest_blocks(conn, parse_source_blocks(content), meta)
+        total += ingest_blocks(conn, parse_source_blocks(content), meta, reviewed=1)
     return total
+
+
+# ---- review-state queries / mutations ----------------------------------------
+
+
+def fetch_unreviewed(conn: sqlite3.Connection) -> list[dict]:
+    """Return unreviewed words ordered by source appearance, with source context."""
+    rows = conn.execute(
+        "SELECT w.word_lower, w.word, w.pos, w.ipa, w.gloss_zh, w.example, "
+        "       w.synonyms, w.antonyms, s.title, s.url, s.date "
+        "FROM words w JOIN sources s ON w.source_url = s.url "
+        "WHERE w.reviewed = 0 "
+        "ORDER BY s.first_seen, w.ord"
+    ).fetchall()
+    keys = (
+        "word_lower", "word", "pos", "ipa", "gloss_zh", "example",
+        "synonyms", "antonyms", "source_title", "source_url", "source_date",
+    )
+    return [dict(zip(keys, r)) for r in rows]
+
+
+def mark_reviewed(conn: sqlite3.Connection, word_lowers: list[str]) -> int:
+    if not word_lowers:
+        return 0
+    qmarks = ",".join("?" * len(word_lowers))
+    cur = conn.execute(
+        f"UPDATE words SET reviewed = 1 WHERE word_lower IN ({qmarks})",
+        word_lowers,
+    )
+    conn.commit()
+    return cur.rowcount
+
+
+def delete_words(conn: sqlite3.Connection, word_lowers: list[str]) -> int:
+    if not word_lowers:
+        return 0
+    qmarks = ",".join("?" * len(word_lowers))
+    cur = conn.execute(
+        f"DELETE FROM words WHERE word_lower IN ({qmarks})", word_lowers
+    )
+    # Prune sources left with no words so vocabulary.tex shows no empty headers.
+    conn.execute(
+        "DELETE FROM sources WHERE url NOT IN "
+        "(SELECT DISTINCT source_url FROM words)"
+    )
+    conn.commit()
+    return cur.rowcount
 
 
 # ---- vocabulary.tex rendering -------------------------------------------------
