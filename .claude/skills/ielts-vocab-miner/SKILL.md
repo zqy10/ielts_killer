@@ -136,8 +136,8 @@ ingest yourself — no confirmation needed, no asking the user to run a script:
   --pending-dir ielts-vocab/pending --vocabulary ielts-vocab/vocabulary.tex
 ```
 
-(`ielts-vocab/ingest.sh` is the same command wrapped for manual use; prefer
-calling `ingest_vocab.py` directly so the run is self-contained.)
+(Ingest has no standalone wrapper script — call `ingest_vocab.py` directly here
+as part of the run so it stays self-contained.)
 
 This merges every pending block into `ielts-vocab/vocab.db` as **unreviewed**
 words (`reviewed=0`), regenerates `vocabulary.tex` (video / article / book
