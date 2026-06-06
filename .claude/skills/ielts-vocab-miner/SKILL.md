@@ -42,18 +42,18 @@ Task Progress:
 - [ ] Step 4: Write .tex with \vocabsource + \vocabentry blocks
 - [ ] Step 5: Run quality checklist
 - [ ] Step 6: **You (agent) ingest** the `.tex` into the DB + regenerate vocabulary.tex — run automatically, no human gate
-- [ ] Step 7 (optional, deferrable, **human-run**): review unreviewed words + learned preferences
+- [ ] Step 7: **You (agent) render** vocabulary.tex → vocabulary.pdf — run automatically, no human gate
+- [ ] Step 8 (optional, deferrable, **human-run**): review unreviewed words + learned preferences
 ```
 
-> **Two separate workflows.** Generation (Steps 1–6) is fully automatic and ends
-> with **you running the ingest yourself** — do not stop after writing the `.tex`
-> and do not ask the user to run a script. After the quality checklist passes,
-> invoke `ingest_vocab.py` (Step 6) to merge the pending `.tex` into the word
-> store and regenerate `vocabulary.tex`. Review (Step 7, `review.sh`) is the only
-> human-in-the-loop step and runs whenever the user chooses: it annotates the
-> *unreviewed* words already in the DB, keeps or **deletes** them, and learns
-> preferences. The DB (`ielts-vocab/vocab.db`) is authoritative; `vocabulary.tex`
-> is its rendered view.
+> **Two separate workflows.** Generation (Steps 1–7) is fully automatic and ends
+> with **you running the ingest and render yourself** — do not stop after writing
+> the `.tex` and do not ask the user to run a script. After the quality checklist
+> passes, invoke `ingest_vocab.py` (Step 6) then `render.sh` (Step 7). Review
+> (Step 8, `review.sh`) is the only human-in-the-loop step and runs whenever the
+> user chooses: it annotates the *unreviewed* words already in the DB, keeps or
+> **deletes** them, and learns preferences. The DB (`ielts-vocab/vocab.db`) is
+> authoritative; `vocabulary.tex` is its rendered view.
 
 ### Step 1: Identify source
 
@@ -146,10 +146,24 @@ Words whose lemma is on the hard reject list (`reject_lemmas`) are skipped so
 rejected words don't reappear. On the first run the DB schema auto-migrates
 (adds the `reviewed` column).
 
-Then report to the user: how many new words were ingested, and remind them they
-can run `ielts-vocab/review.sh` (Step 7) anytime to curate.
+### Step 7: Render PDF (you run this automatically)
 
-### Step 7: Interactive review (optional, can be deferred)
+**This is part of the mining run.** Immediately after ingest succeeds, render
+the PDF — no confirmation needed, no asking the user to run a script:
+
+```bash
+ielts-vocab/render.sh --no-open
+```
+
+`render.sh` auto-detects the available engine (tectonic preferred, xelatex
+fallback) and writes `ielts-vocab/vocabulary.pdf`. The `--no-open` flag skips
+the auto-launch so the agent run stays non-interactive; the PDF path is reported
+to the user in the final summary.
+
+Then report to the user: how many new words were ingested, where the PDF is, and
+remind them they can run `ielts-vocab/review.sh` (Step 8) anytime to curate.
+
+### Step 8: Interactive review (optional, can be deferred)
 
 Run anytime to curate the unreviewed words already in the DB:
 
@@ -159,7 +173,8 @@ ielts-vocab/review.sh        # review ALL unreviewed words in the DB
 
 Per word: **Enter = 保留** (mark reviewed), **空格 = 删除** (remove from DB),
 **← = 回到上一个** (undo the previous word's label), **q = 结束** (stop early;
-undecided words stay unreviewed for next time).
+undecided words stay unreviewed for next time). After review, `vocabulary.tex`
+is regenerated — re-run `ielts-vocab/render.sh` to update the PDF.
 
 At the end: enter **学习率 0–100** once (higher = stronger update to personal
 preferences; default/recommended 65). Kept words are marked `reviewed=1`,
