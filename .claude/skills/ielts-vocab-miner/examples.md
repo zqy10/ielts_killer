@@ -2,22 +2,6 @@
 
 Illustrative `\vocabsource` + `\vocabentry` blocks (abbreviated). Real runs target **20–25** entries at **Band 8.5+** difficulty: roughly **half IELTS advanced (Track A)** and **half domain advanced from the source (Track B)**. Entries are **not** labeled by track in the `.tex` file.
 
-## Interactive review (after generating `.tex` in `pending/`)
-
-From repo root, in a terminal:
-
-```bash
-ielts-vocab/review.sh     # default: 1 random pending file
-ielts-vocab/review.sh 3   # 3 random pending files
-```
-
-- **Enter / 换行** — keep entry  
-- **Space** — delete entry  
-- **q** — end current file (remaining entries in that file are dropped)  
-- After all files: enter **learning rate 0–100** once (higher = stronger personal bias on future runs)
-
-Moves reviewed files to `ielts-vocab/reviewed/`, merges into `vocabulary.tex`, updates `ielts-vocab/learner/preferences.json` and `learned-preferences.md`.
-
 ## YouTube / TED (video)
 
 Mix note: ~6 Track A (e.g. `substantiate`, `colossal`, `disparity`) + ~7 Track B (e.g. `pyrrhic`, `Generalissimo`, `urbanisation`).

@@ -3,9 +3,10 @@ name: ielts-vocab-miner
 description: >-
   Fetches subtitles and articles from YouTube, TED, BBC, and news sites,
   extracts Band 8.5+ difficulty English (about half IELTS-oriented advanced,
-  half domain-specific advanced), outputs \vocabentry and \vocabsource with IPA.
-  Supports interactive review and learned preferences. Use for IELTS vocabulary,
-  Band 8.5, advanced English, C1/C2, difficult words, subtitles, TED, BBC.
+  half domain-specific advanced), outputs \vocabentry and \vocabsource with IPA,
+  ingests them into a de-duplicated SQLite store and renders a PDF notebook.
+  Use for IELTS vocabulary, Band 8.5, advanced English, C1/C2, difficult words,
+  subtitles, TED, BBC.
 ---
 
 # IELTS Vocab Miner
@@ -43,17 +44,13 @@ Task Progress:
 - [ ] Step 5: Run quality checklist
 - [ ] Step 6: **You (agent) ingest** the `.tex` into the DB + regenerate vocabulary.tex — run automatically, no human gate
 - [ ] Step 7: **You (agent) render** vocabulary.tex → vocabulary.pdf — run automatically, no human gate
-- [ ] Step 8 (optional, deferrable, **human-run**): review unreviewed words + learned preferences
 ```
 
-> **Two separate workflows.** Generation (Steps 1–7) is fully automatic and ends
-> with **you running the ingest and render yourself** — do not stop after writing
-> the `.tex` and do not ask the user to run a script. After the quality checklist
-> passes, invoke `ingest_vocab.py` (Step 6) then `render.sh` (Step 7). Review
-> (Step 8, `review.sh`) is the only human-in-the-loop step and runs whenever the
-> user chooses: it annotates the *unreviewed* words already in the DB, keeps or
-> **deletes** them, and learns preferences. The DB (`ielts-vocab/vocab.db`) is
-> authoritative; `vocabulary.tex` is its rendered view.
+> **One automatic pipeline.** Steps 1–7 run end to end with **you running the
+> ingest and render yourself** — do not stop after writing the `.tex` and do not
+> ask the user to run a script. After the quality checklist passes, invoke
+> `ingest_vocab.py` (Step 6) then `render.sh` (Step 7). The DB
+> (`ielts-vocab/vocab.db`) is authoritative; `vocabulary.tex` is its rendered view.
 
 ### Step 1: Identify source
 
@@ -81,13 +78,9 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 Read JSON: `title`, `url`, `date`, `text`, `source_type`, `candidates_ielts[]`, `candidates_advanced[]`, `candidates[]`, `warnings[]`.
 
-Candidate ranking incorporates `ielts-vocab/learner/preferences.json` when it exists (from prior reviews).
-
 If `text` is empty or script exits non-zero, report `warnings` and suggest alternatives. Article fetch may fail on paywalls—allow one WebFetch fallback; add warning `fallback:webfetch`.
 
 ### Step 3: Curate vocabulary (dual track, Band 8.5+)
-
-**Before curating**: if [ielts-vocab/learner/learned-preferences.md](../../ielts-vocab/learner/learned-preferences.md) exists, read and apply its keep/reject tendencies.
 
 Default **N = 20–25** entries (15–30 range; up to **40** for long texts).
 
@@ -139,12 +132,9 @@ ingest yourself — no confirmation needed, no asking the user to run a script:
 (Ingest has no standalone wrapper script — call `ingest_vocab.py` directly here
 as part of the run so it stays self-contained.)
 
-This merges every pending block into `ielts-vocab/vocab.db` as **unreviewed**
-words (`reviewed=0`), regenerates `vocabulary.tex` (video / article / book
-sections), then **deletes the pending source files** (the DB is authoritative).
-Words whose lemma is on the hard reject list (`reject_lemmas`) are skipped so
-rejected words don't reappear. On the first run the DB schema auto-migrates
-(adds the `reviewed` column).
+This merges every pending block into `ielts-vocab/vocab.db` (de-duplicated by
+lowercased word), regenerates `vocabulary.tex` (video / article / book sections),
+then **deletes the pending source files** (the DB is authoritative).
 
 ### Step 7: Render PDF (you run this automatically)
 
@@ -160,33 +150,13 @@ fallback) and writes `ielts-vocab/vocabulary.pdf`. The `--no-open` flag skips
 the auto-launch so the agent run stays non-interactive; the PDF path is reported
 to the user in the final summary.
 
-Then report to the user: how many new words were ingested, where the PDF is, and
-remind them they can run `ielts-vocab/review.sh` (Step 8) anytime to curate.
-
-### Step 8: Interactive review (optional, can be deferred)
-
-Run anytime to curate the unreviewed words already in the DB:
-
-```bash
-ielts-vocab/review.sh        # review ALL unreviewed words in the DB
-```
-
-Per word: **Enter = 保留** (mark reviewed), **空格 = 删除** (remove from DB),
-**← = 回到上一个** (undo the previous word's label), **q = 结束** (stop early;
-undecided words stay unreviewed for next time). After review, `vocabulary.tex`
-is regenerated — re-run `ielts-vocab/render.sh` to update the PDF.
-
-At the end: enter **学习率 0–100** once (higher = stronger update to personal
-preferences; default/recommended 65). Kept words are marked `reviewed=1`,
-rejected words are deleted from the DB (orphan sources pruned), and
-`vocabulary.tex` is regenerated.
+Then report to the user: how many new words were ingested and where the PDF is.
 
 Outputs:
 
 - `ielts-vocab/vocab.db` — authoritative word store (updated in place)
 - `ielts-vocab/vocabulary.tex` — regenerated master notebook
-- `ielts-vocab/learner/preferences.json` — weights (gitignored)
-- `ielts-vocab/learner/learned-preferences.md` — Agent-readable summary
+- `ielts-vocab/vocabulary.pdf` — compiled PDF
 
 ## Examples
 
@@ -194,5 +164,5 @@ Full sample outputs: [examples.md](examples.md)
 
 ## Additional resources
 
-- Band 8.5+ rubric, exclude list, IPA, learner: [reference.md](reference.md)
-- Scripts: [fetch_content.py](scripts/fetch_content.py), [clean_text.py](scripts/clean_text.py), [ingest_vocab.py](scripts/ingest_vocab.py), [review_vocab.py](scripts/review_vocab.py), [vocab_db.py](scripts/vocab_db.py), [learner.py](scripts/learner.py)
+- Band 8.5+ rubric, exclude list, IPA: [reference.md](reference.md)
+- Scripts: [fetch_content.py](scripts/fetch_content.py), [clean_text.py](scripts/clean_text.py), [ingest_vocab.py](scripts/ingest_vocab.py), [vocab_db.py](scripts/vocab_db.py), [texlib.py](scripts/texlib.py)

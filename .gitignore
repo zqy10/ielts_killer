@@ -2,4 +2,3 @@ CLAUDE.md
 .claude/settings.local.json
 .claude/worktrees/
 ielts-vocab/.build/
-ielts-vocab/learner/preferences.json

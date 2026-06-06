@@ -15,13 +15,12 @@
 
 | Path | Purpose |
 |------|---------|
-| `pending/` | Agent output `.tex` awaiting human review |
-| `reviewed/` | Human-reviewed `.tex` (kept entries) |
-| `vocabulary.tex` | Master notebook (video / article / book sections) |
-| `review.sh` | `./review.sh [N]` — review N random pending files + merge |
-| `learner/` | `preferences.json`, `learned-preferences.md` |
+| `pending/` | Agent output `.tex` awaiting ingest (cleared by `ingest_vocab.py`) |
+| `vocab.db` | SQLite word store (authoritative, de-duplicated) |
+| `vocabulary.tex` | Master notebook (video / article / book sections), generated from the DB |
+| `vocabulary.pdf` | Compiled PDF (output of `render.sh`) |
 
-Optional sidecar `pending/foo.meta.json` with `"source_type": "book"` helps `merge_vocab.py` classify sources.
+Optional sidecar `pending/foo.meta.json` with `"source_type": "book"` helps `ingest_vocab.py` classify sources.
 
 ## Compliance
 
@@ -73,12 +72,6 @@ Do **not** select unless part of a strong collocation:
 - Pseudo-advanced (Band 8.5+): `significant`, `important`, `various`, `different`, `develop`, `increase`
 
 **Skip**: fillers, auto-sub errors, bare country names.
-
-## Learned preferences (personal)
-
-If present, read **[ielts-vocab/learner/learned-preferences.md](../../ielts-vocab/learner/learned-preferences.md)** before curating. It is updated by [scripts/review_vocab.py](scripts/review_vocab.py) after human keep/delete feedback and a 0–100 learning rate.
-
-Raw weights: `ielts-vocab/learner/preferences.json` (gitignored).
 
 ## Academic Word List (AWL) — sample lemmas
 

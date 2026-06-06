@@ -437,38 +437,6 @@ def _collect_token_stats_fallback(text: str) -> list[dict]:
     ]
 
 
-_LEARNER_WEIGHTS: dict | None = None
-
-
-def _get_learner_weights() -> dict:
-    global _LEARNER_WEIGHTS
-    if _LEARNER_WEIGHTS is None:
-        try:
-            from learner import load_learner_weights
-
-            _LEARNER_WEIGHTS = load_learner_weights()
-        except Exception:
-            _LEARNER_WEIGHTS = {
-                "lemma_boost": {},
-                "lemma_penalty": {},
-                "reject_lemmas": set(),
-                "min_length_preference": 7,
-                "pos_boost": {},
-            }
-    return _LEARNER_WEIGHTS
-
-
-def _apply_learner(score: float, row: dict) -> float:
-    try:
-        from learner import apply_learner_score_adjustment
-
-        return apply_learner_score_adjustment(
-            score, row["lemma"], row.get("pos", "UNK"), _get_learner_weights()
-        )
-    except Exception:
-        return score
-
-
 def _score_ielts(row: dict) -> float:
     lemma, count = row["lemma"], row["count"]
     score = float(count)
@@ -483,7 +451,7 @@ def _score_ielts(row: dict) -> float:
     # Band 8.5+: down-rank over-frequent mid-tier news lexis
     if lemma in {"missile", "drone", "airport", "ceasefire", "significant", "important"}:
         score -= 2.0
-    return _apply_learner(score, row)
+    return score
 
 
 def _score_advanced(row: dict) -> float:
@@ -507,7 +475,7 @@ def _score_advanced(row: dict) -> float:
         score -= 2.0
     if "-" in lemma or " " in lemma:
         score += 1.0
-    return _apply_learner(score, row)
+    return score
 
 
 def _rank_pool(rows: list[dict], scorer, limit: int = 40) -> list[dict]:

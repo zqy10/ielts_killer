@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """Generation workflow: ingest pending .tex into the DB and regenerate vocabulary.tex.
 
-Runs with NO human gate. Pending blocks are merged into the SQLite word store as
-*unreviewed* words (reviewed=0); words on the hard reject list are skipped. After
-a successful render, the pending source files are deleted (the DB is the
-authoritative store). Human review happens separately via review_vocab.py.
+Pending blocks are merged into the SQLite word store (de-duplicated by lowercased
+word), vocabulary.tex is regenerated from the DB, then the pending source files are
+deleted (the DB is the authoritative store).
 """
 
 from __future__ import annotations
@@ -14,7 +13,7 @@ import sqlite3
 import sys
 from pathlib import Path
 
-from learner import find_repo_root, ielts_vocab_dir, load_preferences, pending_dir
+from texlib import find_repo_root, ielts_vocab_dir, pending_dir
 from vocab_db import (
     db_path,
     import_pending,
@@ -27,16 +26,15 @@ from vocab_db import (
 def ingest_vocabulary(vocabulary_path: Path, pending: Path, database: Path) -> int:
     """Merge pending/*.tex into the DB, regenerate vocabulary.tex, clear pending.
 
-    Returns the count of new (unreviewed) words ingested.
+    Returns the count of new words ingested.
     """
     conn = sqlite3.connect(database)
     try:
         init_db(conn)
-        # Seed from existing tex (idempotent, reviewed=1) so manual edits and
-        # pre-DB content are absorbed, then ingest fresh pending as unreviewed.
+        # Seed from existing tex (idempotent) so manual edits and pre-DB content
+        # are absorbed before ingesting fresh pending blocks.
         migrate_from_tex(conn, vocabulary_path)
-        reject = set(load_preferences().get("reject_lemmas") or [])
-        new_words = import_pending(conn, pending, reject)
+        new_words = import_pending(conn, pending)
         render_vocabulary_tex(conn, vocabulary_path)
     finally:
         conn.close()
@@ -69,7 +67,7 @@ def main() -> int:
 
     new_words = ingest_vocabulary(vocab.resolve(), pending.resolve(), database.resolve())
     print(
-        f"Ingested {new_words} new (unreviewed) words into {vocab} "
+        f"Ingested {new_words} new words into {vocab} "
         f"(store: {database}); pending cleared."
     )
     return 0
