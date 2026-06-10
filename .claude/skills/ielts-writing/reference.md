@@ -60,6 +60,15 @@
 Use the **key** in the pending JSON `theme` field. Unknown themes fall back to `other`.
 Keep this list in sync with `THEME_LABELS` in `scripts/writing_db.py`.
 
+## Task 1 chart types (keys → labels)
+
+`line` 折线图 · `bar` 柱状图 · `pie` 饼图 · `table` 表格 · `map` 地图 ·
+`process` 流程图 · `mixed` 组合图表 · `other` 其他.
+
+The PDF groups **Task 2 by theme** but **Task 1 by chart type** (the `subtype` field),
+so `subtype` is required for Task 1. Unknown subtypes fall back to `other`. Keep this
+list in sync with `CHART_LABELS` in `scripts/writing_db.py`.
+
 ## High-value language to look for in samples
 - Cohesion beyond basics: *that said, by the same token, in much the same way, this is
   largely because, a case in point.*

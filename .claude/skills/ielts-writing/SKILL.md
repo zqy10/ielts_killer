@@ -5,7 +5,8 @@ description: >-
   and theme, finds Band 8.5+ sample essays, analyses them for high-value expressions
   and ideas, then writes a fresh Band 8.5+ essay. Stores prompts, sample text and
   essays in a SQLite DB (logging searched URLs to avoid re-searching), regenerates
-  writing.tex and renders a PDF organised by Task 1/Task 2 and theme. Use for IELTS
+  writing.tex and renders a PDF organised by Task 1 (by chart type) and Task 2 (by
+  theme). Use for IELTS
   writing, 雅思写作, 大作文, 小作文, 范文, 议论文, 图表作文, Task 1, Task 2, Band 8.5/9 essay.
 ---
 
@@ -15,8 +16,9 @@ Generate **Band 8.5+** IELTS essays on demand. The user names a **task type**
 (Task 1 / Task 2) and a **theme** (e.g. environment, education); you find a real
 prompt + a high-band sample, mine the sample for high-value language, then write
 your own Band 8.5+ essay. Everything is stored in `ielts-writing/writing.db` and
-rendered into `ielts-writing/writing.pdf`, grouped by **Task 1 / Task 2** then by
-**theme**.
+rendered into `ielts-writing/writing.pdf`, grouped by **Task 1 / Task 2** — Task 1
+essays are then grouped by **chart type** (line / bar / pie / table / map / process /
+mixed), Task 2 essays by **theme**.
 
 > **One prompt per request** unless the user explicitly asks for a batch. Do not
 > bulk-scrape. Personal study use only.
@@ -35,7 +37,7 @@ rendered into `ielts-writing/writing.pdf`, grouped by **Task 1 / Task 2** then b
 
 ```
 Task Progress:
-- [ ] Step 1: Parse request → task_type + theme (+ optional subtype)
+- [ ] Step 1: Parse request → task_type + theme (+ subtype; required for Task 1)
 - [ ] Step 2: DB-first — reuse stored prompts / logged URLs before searching
 - [ ] Step 3: Find a real prompt (WebSearch), log every URL touched
 - [ ] Step 4: Find a Band 8.5+ sample essay; capture its full text + source URL
@@ -54,7 +56,9 @@ Map the user's words to:
 - `theme`: one canonical key from `reference.md` (education, environment, technology,
   health, society, government, crime, work, globalisation, media, transport, tourism,
   culture, science, urbanisation, other).
-- `subtype` (optional): T1 → line/bar/pie/table/map/process/mixed; T2 →
+- `subtype`: T1 → line/bar/pie/table/map/process/mixed (**required** — the PDF groups
+  Task 1 essays by this chart type; theme is still stored but only displayed per
+  prompt); T2 (optional) →
   opinion / discussion / problem-solution / advantages-disadvantages / two-part.
 
 ### Step 2 — Check the DB first (saves tokens)
@@ -113,6 +117,21 @@ Write an original Band 8.5+ essay following `reference.md` (T1 ≥150 words, T2 
 4-paragraph structure; lexical range; cohesion; fully addressed task). Keep it your own
 prose, not a paraphrase of the sample. Count words for `word_count`.
 
+**Inline highlights — mandatory.** Wrap 5–8 high-value expressions with `[[double brackets]]`
+in **both** `essay_text` and `sample_text`. The renderer converts `[[...]]` → `\hi{...}`
+(yellow highlight + bold) automatically at ingest time. Use this to mark the same kind of
+expressions listed in `highlights[]` — collocations, trend phrases, cohesion devices —
+so they stand out on the printed page.
+
+```
+# ✓ correct — use [[ ]] markers in prose fields
+"essay_text": "The data [[underwent a striking reversal]]: ..."
+"sample_text": "...home to [[the overwhelming majority]] (81%)..."
+
+# ✗ wrong — never write \hi{} or any LaTeX directly in prose fields
+"essay_text": "The data \\hi{underwent a striking reversal}: ..."
+```
+
 ### Step 8 — Write the pending JSON
 
 Write one file `ielts-writing/pending/<task>-<theme>-<YYYY-MM-DD>.json`. Schema:
@@ -128,12 +147,12 @@ Write one file `ielts-writing/pending/<task>-<theme>-<YYYY-MM-DD>.json`. Schema:
   "image_url": "",
   "sample_found": true,
   "sample_source_url": "https://...",
-  "sample_text": "Full sample essay text ...",
+  "sample_text": "Full sample [[with key phrases]] marked ...",
   "analysis": "Why this is Band 9 ...",
   "highlights": [
     {"expr": "mitigate the adverse effects of", "zh": "减轻……的不利影响", "note": "替代 reduce bad effects"}
   ],
-  "essay_text": "Para 1 ...\n\nPara 2 ...\n\nPara 3 ...\n\nPara 4 ...",
+  "essay_text": "Para 1 [[with key phrases]] marked ...\n\nPara 2 ...\n\nPara 3 ...\n\nPara 4 ...",
   "word_count": 268,
   "band": "8.5+",
   "sources": [
@@ -143,7 +162,8 @@ Write one file `ielts-writing/pending/<task>-<theme>-<YYYY-MM-DD>.json`. Schema:
 ```
 
 Prose fields are plain text; paragraphs are separated by a blank line (`\n\n`). LaTeX
-escaping happens at render time — do **not** pre-escape.
+escaping happens at render time — do **not** pre-escape. Use `[[...]]` for inline
+highlights (see Step 7); never write `\hi{}` or any LaTeX directly in prose fields.
 
 ### Step 9 — Ingest (automatic, no gate)
 

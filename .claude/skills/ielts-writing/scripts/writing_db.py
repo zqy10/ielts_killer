@@ -50,6 +50,19 @@ THEME_LABELS: dict[str, tuple[str, str]] = {
     "other": ("其他", "Other"),
 }
 
+# Task 1 chart types: key -> (中文, English). Task 1 sections group by chart type
+# (the prompt's subtype), NOT by theme; Task 2 groups by theme.
+CHART_LABELS: dict[str, tuple[str, str]] = {
+    "line": ("折线图", "Line Graph"),
+    "bar": ("柱状图", "Bar Chart"),
+    "pie": ("饼图", "Pie Chart"),
+    "table": ("表格", "Table"),
+    "map": ("地图", "Map"),
+    "process": ("流程图", "Process Diagram"),
+    "mixed": ("组合图表", "Mixed Charts"),
+    "other": ("其他", "Other"),
+}
+
 TASK_TYPES = ("task1", "task2")
 
 TASK_SECTION = {
@@ -410,7 +423,10 @@ def latex_paragraphs(text: str) -> str:
 
 
 def _essay_blocks(conn: sqlite3.Connection, task_type: str) -> dict[str, list[str]]:
-    """Return {theme_key: [rendered latex block, ...]} for one task type."""
+    """Return {group_key: [rendered latex block, ...]} for one task type.
+
+    Task 1 groups by chart type (the prompt's subtype); Task 2 groups by theme.
+    """
     rows = conn.execute(
         "SELECT p.id, p.subtype, p.theme, p.prompt_text, p.chart_desc, p.image_path, "
         "       p.source_url, e.sample_found, e.sample_source_url, e.sample_title, "
@@ -419,7 +435,7 @@ def _essay_blocks(conn: sqlite3.Connection, task_type: str) -> dict[str, list[st
         "WHERE p.task_type = ? ORDER BY p.theme, e.id",
         (task_type,),
     ).fetchall()
-    by_theme: dict[str, list[str]] = {}
+    by_group: dict[str, list[str]] = {}
     task_label = "Task 1" if task_type == "task1" else "Task 2"
     for r in rows:
         (
@@ -427,14 +443,19 @@ def _essay_blocks(conn: sqlite3.Connection, task_type: str) -> dict[str, list[st
             _sf, sample_src, sample_title, sample_text, analysis, highlights_json,
             essay_text, word_count, band,
         ) = r
-        by_theme.setdefault(theme, []).append(
+        if task_type == "task1":
+            key = (subtype or "").strip().lower()
+            group = key if key in CHART_LABELS else "other"
+        else:
+            group = theme
+        by_group.setdefault(group, []).append(
             _render_essay_block(
                 task_label, subtype, theme, prompt_text, chart_desc, image_path,
                 sample_src, sample_title, sample_text, analysis, highlights_json,
                 essay_text, word_count, band,
             )
         )
-    return by_theme
+    return by_group
 
 
 def _render_prompt(task_label, subtype, theme, prompt_text) -> str:
@@ -523,16 +544,17 @@ def _render_essay_block(
 
 
 def _render_task_section(conn: sqlite3.Connection, task_type: str) -> str:
-    by_theme = _essay_blocks(conn, task_type)
+    by_group = _essay_blocks(conn, task_type)
+    labels = CHART_LABELS if task_type == "task1" else THEME_LABELS
     out = [TASK_SECTION[task_type]["header"], TASK_SECTION[task_type]["markboth"], ""]
-    if not by_theme:
+    if not by_group:
         out.append("\\textit{暂无内容}")
         return "\n".join(out).rstrip() + "\n"
-    for theme in sorted(by_theme, key=lambda t: list(THEME_LABELS).index(t) if t in THEME_LABELS else 999):
-        theme_zh, theme_en = THEME_LABELS.get(theme, THEME_LABELS["other"])
-        out.append(f"\\subsection{{{theme_zh} ({theme_en})}}")
+    for group in sorted(by_group, key=lambda g: list(labels).index(g) if g in labels else 999):
+        zh, en = labels.get(group, labels["other"])
+        out.append(f"\\subsection{{{latex_escape(zh)} ({latex_escape(en)})}}")
         out.append("")
-        for block in by_theme[theme]:
+        for block in by_group[group]:
             out.append(block)
             out.append("")
     return "\n".join(out).rstrip() + "\n"
