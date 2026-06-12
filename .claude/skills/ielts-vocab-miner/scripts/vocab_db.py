@@ -33,9 +33,13 @@ SECTION_DEFS = {
         "header": r"\section{书籍来源 (From Books)}",
         "markboth": r"\markboth{书籍来源}{}",
     },
+    "other": {
+        "header": r"\section{其他来源 (Other Sources)}",
+        "markboth": r"\markboth{其他来源}{}",
+    },
 }
 
-CATEGORIES = ("video", "article", "book")
+CATEGORIES = ("video", "article", "book", "other")
 PLACEHOLDER_MARKERS = ("暂无内容", r"\begin{verbatim}")
 
 
@@ -190,6 +194,7 @@ def split_vocabulary_tex(text: str) -> tuple[str, dict[str, str], str]:
         ("video", r"\\section\{视频来源"),
         ("article", r"\\section\{文章来源"),
         ("book", r"\\section\{书籍来源"),
+        ("other", r"\\section\{其他来源"),
     ]
     for idx, (key, pat) in enumerate(patterns):
         m = re.search(pat, body)

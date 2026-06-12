@@ -6,7 +6,9 @@ description: >-
   half domain-specific advanced), outputs \vocabentry and \vocabsource with IPA,
   ingests them into a de-duplicated SQLite store and renders a PDF notebook.
   Use for IELTS vocabulary, Band 8.5, advanced English, C1/C2, difficult words,
-  subtitles, TED, BBC.
+  subtitles, TED, BBC. Also expands the user's own word list
+  (ielts-vocab/pending/my.md) into full entries — triggers: 整理词汇, 自选词汇,
+  my.md, word list expansion.
 ---
 
 # IELTS Vocab Miner
@@ -157,6 +159,48 @@ Outputs:
 - `ielts-vocab/vocab.db` — authoritative word store (updated in place)
 - `ielts-vocab/vocabulary.tex` — regenerated master notebook
 - `ielts-vocab/vocabulary.pdf` — compiled PDF
+
+## Flow: 整理词汇 (expand my.md)
+
+Triggered when the user says **“整理词汇”** (or asks to expand `my.md` / 自选词汇).
+This flow does **not** fetch any URL — the user keeps a bare word list at
+`ielts-vocab/pending/my.md` (one word per line) and you expand it into full
+entries under a dedicated **其他来源 (Other Sources)** section.
+
+1. **Read `ielts-vocab/pending/my.md`.** Strip blank lines and in-file
+   duplicates. If the file is missing or has no words, tell the user
+   **“没有词汇可拓展”** and stop.
+2. **Check the DB first.** Query `ielts-vocab/vocab.db` for words already in the
+   store (de-dup key is lowercased word), e.g.:
+
+   ```bash
+   sqlite3 ielts-vocab/vocab.db \
+     "SELECT word_lower FROM words WHERE word_lower IN ('word1','word2',...)"
+   ```
+
+   Skip those words (first occurrence wins) and list them in the final report.
+3. **Write the entries yourself.** For each new word produce a full 7-field
+   `\vocabentry` (same contract as above; IPA in Unicode). **Example sentences
+   should read like IELTS Writing Task 2 prose** — argumentative, academic
+   register (education, environment, technology, society…). If a word genuinely
+   doesn't fit that register (e.g. `venous`, `distension`), write a natural
+   example instead.
+4. **Write the pending tex** to `ielts-vocab/pending/my-words-<YYYY-MM-DD>.tex`:
+
+   ```latex
+   \vocabsource{自选词汇 <YYYY-MM-DD>}{local://my-words/<YYYY-MM-DD>}{<YYYY-MM-DD>}
+   ```
+
+   The `local://my-words` URL prefix routes the block into the 其他来源 section;
+   the dated URL keeps each 整理 run as its own dated block in the PDF.
+5. **Ingest + render** — run Step 6 and Step 7 exactly as in the mining flow
+   (`ingest_vocab.py` then `render.sh --no-open`). Ingest only deletes
+   `*.tex`/`*.meta.json`, so `my.md` is untouched.
+6. **Report, then ask before clearing.** Report how many words were added, which
+   were skipped as already stored, and the PDF path. Then **ask the user for
+   permission to clear `my.md`** — this is the only human gate in this flow. On
+   approval, truncate the file to empty (keep the file itself); otherwise leave
+   it as is.
 
 ## Examples
 

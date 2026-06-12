@@ -20,6 +20,16 @@
 
 技能会自动完成抓取、提炼、入库、渲染，最后告诉你新增了多少词、PDF 在哪。
 
+## 整理自选词汇（my.md）
+
+平时把生词随手记到 `ielts-vocab/pending/my.md`（每行一个单词），然后在对话框输入：
+
+> 整理词汇
+
+Claude 会把这些单词扩展成完整词条（词性 / IPA / 中文 / 例句 / 近反义词，例句尽量贴合雅思写作场景），
+入库后渲染进 PDF 的「**其他来源 (Other Sources)**」章节，并在征得你同意后清空 `my.md`。
+若 `my.md` 为空则提示没有词汇可拓展；已收录过的词会自动跳过并在汇报中列出。
+
 ## 慢速开始
 
 需要先做一次性环境准备（见文末）。所有命令都从仓库根目录运行。
@@ -46,14 +56,14 @@ ielts-vocab/render.sh            # 编译并自动打开；加 --no-open 只编�
 ## 数据来源唯一性
 
 `vocab.db`（SQLite）是**权威词库**，按小写单词全局去重（同一个词只收一次）。
-`vocabulary.tex` 是从数据库**重新生成**的视图，按来源类别（视频 / 文章 / 书籍）分组，
+`vocabulary.tex` 是从数据库**重新生成**的视图，按来源类别（视频 / 文章 / 书籍 / 其他）分组，
 再由 `render.sh` 编译成 PDF。不要手改 `vocabulary.tex` 当真相 —— 改了也会在下次 ingest 时被库覆盖。
 
 ## 目录速查
 
 | 路径 | 用途 |
 |------|------|
-| `pending/` | Claude 生成、等待入库的 `.tex`（ingest 后自动清空） |
+| `pending/` | Claude 生成、等待入库的 `.tex`（ingest 后自动清空）；`my.md` 为用户自选词汇清单（不会被 ingest 删除） |
 | `vocab.db` | SQLite 权威词库（去重存储；`vocabulary.tex` 由它生成） |
 | `vocabulary.tex` | 生成的主笔记（编译为 PDF） |
 | `vocabulary.pdf` | 编译产物 |

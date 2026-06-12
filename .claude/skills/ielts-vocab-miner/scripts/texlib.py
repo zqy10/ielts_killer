@@ -33,10 +33,12 @@ def pending_dir(repo_root: Path | None = None) -> Path:
 
 
 def classify_source_url(url: str, meta: dict | None = None) -> str:
-    """Return video | article | book."""
-    if meta and meta.get("source_type") in ("video", "article", "book"):
+    """Return video | article | book | other."""
+    if meta and meta.get("source_type") in ("video", "article", "book", "other"):
         return meta["source_type"]
     u = (url or "").lower()
+    if u.startswith("local://my-words"):
+        return "other"
     if any(x in u for x in ("youtube.com", "youtu.be", "ted.com", "nebula.tv")):
         return "video"
     if any(x in u for x in ("goodreads", ".epub", "/dp/", "books.google")):
