@@ -1,4 +1,15 @@
+# macOS 系统垃圾
+.DS_Store
+
+# Claude Code 本地配置（沿用原有约定：CLAUDE.md 不入库）
 CLAUDE.md
 .claude/settings.local.json
 .claude/worktrees/
-ielts-vocab/.build/
+
+# 三个数据工作区：各自是独立的 git 小仓库，与代码完全隔离（见 GIT_GUIDE.md）
+ielts-vocab/
+ielts-writing/
+ielts-speaking/
+
+# 前期思考文档，仅本地保存，不入库
+documents/

@@ -152,7 +152,7 @@ For `p1` banks: 4–6 question objects, all `"part": "p1"`, no `cue_points`;
 
 ```bash
 python3 .claude/skills/ielts-speaking/scripts/ingest_speaking.py
-ielts-speaking/render.sh --no-open
+.claude/skills/ielts-speaking/scripts/render.sh --no-open
 ```
 
 Ingest prints the Q-number range it assigned (e.g. `questions Q17–Q23`). Report to
@@ -229,7 +229,7 @@ markers, no edits beyond removing transcription artefacts the user didn't say).
 
 ```bash
 python3 .claude/skills/ielts-speaking/scripts/ingest_speaking.py
-ielts-speaking/render.sh --no-open
+.claude/skills/ielts-speaking/scripts/render.sh --no-open
 ```
 
 A failed attempt file (e.g. unknown question number) is **kept in pending/** and

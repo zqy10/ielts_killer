@@ -177,8 +177,8 @@ sources, regenerates `writing.tex`, and deletes the ingested pending file.
 ### Step 10 — Render the PDF
 
 ```bash
-ielts-writing/render.sh            # compile + open
-ielts-writing/render.sh --no-open  # compile only
+.claude/skills/ielts-writing/scripts/render.sh            # compile + open
+.claude/skills/ielts-writing/scripts/render.sh --no-open  # compile only
 ```
 
 Then tell the user: the prompt/theme added, target band, word count, and that

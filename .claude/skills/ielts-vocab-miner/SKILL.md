@@ -144,7 +144,7 @@ then **deletes the pending source files** (the DB is authoritative).
 the PDF — no confirmation needed, no asking the user to run a script:
 
 ```bash
-ielts-vocab/render.sh --no-open
+.claude/skills/ielts-vocab-miner/scripts/render.sh --no-open
 ```
 
 `render.sh` auto-detects the available engine (tectonic preferred, xelatex

@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
-# 编译 writing.tex → writing.pdf
-# 用法: ielts-writing/render.sh [--no-open]
+# 编译 ielts-vocab/vocabulary.tex → vocabulary.pdf
+# 用法: .claude/skills/ielts-vocab-miner/scripts/render.sh [--no-open]
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "$0")" && pwd)"
-TEX="$ROOT/writing.tex"
-OUT="$ROOT/writing.pdf"
-BUILD="$ROOT/.build"
+# 脚本位于 .claude/skills/ielts-vocab-miner/scripts/，项目根在上面 4 层
+ROOT="$(cd "$(dirname "$0")/../../../.." && pwd)"
+WORK="$ROOT/ielts-vocab"
+TEX="$WORK/vocabulary.tex"
+OUT="$WORK/vocabulary.pdf"
+BUILD="$WORK/.build"
 AUTO_OPEN=true
 
 for arg in "$@"; do
@@ -29,7 +31,7 @@ else
     brew install --cask mactex         # ~4 GB，开箱即用
     brew install --cask basictex       # ~100 MB，需手动 tlmgr 补包
 
-安装后重新运行 ielts-writing/render.sh
+安装后重新运行 render.sh
 EOF
     exit 1
 fi
@@ -41,7 +43,7 @@ echo "编译: $TEX → $OUT"
 if [[ "$ENGINE" == "tectonic" ]]; then
     # 让 fontspec 能找到 macOS 系统字体（Times New Roman 等）
     export OSFONTDIR="/Library/Fonts:/System/Library/Fonts:$HOME/Library/Fonts"
-    # 首次运行会自动下载缺失的 CTAN 宏包（FandolSong 等）
+    # 首次运行会自动下载缺失的 CTAN 宏包（FandolSong、Charis SIL 等）
     tectonic --outdir "$BUILD" "$TEX"
 else
     # xelatex 需运行两次以正确生成目录和超链接
@@ -50,7 +52,7 @@ else
         || { echo "编译出错，日志: $BUILD/xelatex.log" >&2; exit 1; }
 fi
 
-cp "$BUILD/writing.pdf" "$OUT"
+cp "$BUILD/vocabulary.pdf" "$OUT"
 echo "PDF 已生成: $OUT"
 
 if $AUTO_OPEN && [[ "$OSTYPE" == "darwin"* ]]; then
