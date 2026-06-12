@@ -7,9 +7,10 @@ CLAUDE.md
 .claude/worktrees/
 
 # 三个数据工作区：各自是独立的 git 小仓库，与代码完全隔离（见 GIT_GUIDE.md）
-ielts-vocab/
-ielts-writing/
-ielts-speaking/
+# 注意：必须以 / 开头锚定仓库根，否则会连带忽略 .claude/skills/ 下的同名技能目录
+/ielts-vocab/
+/ielts-writing/
+/ielts-speaking/
 
 # 前期思考文档，仅本地保存，不入库
-documents/
+/documents/
